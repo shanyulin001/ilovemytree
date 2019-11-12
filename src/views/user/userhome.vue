@@ -16,7 +16,7 @@
             <van-cell is-link to="user_stgyl" ><i class="fa fa-tree"></i> 我的生态公益林</van-cell>
             <van-cell is-link to="userhome" ><i class="fa fa-tree"></i> 我的古树名木</van-cell>
             <van-cell is-link to="remaining" ><i class="fa fa-cny"></i> 余额</van-cell>
-            <van-cell is-link to="userhome" ><i class="fa fa-align-center"></i> 积分</van-cell>
+            <van-cell is-link to="jifen" ><i class="fa fa-align-center"></i> 积分</van-cell>
             <van-cell is-link to="shezhi" ><i class="fa fa-cog"></i> 设置</van-cell>
             <van-cell is-link to="userhome" ><i class="fa fa-volume-control-phone"></i> 在线客服</van-cell>
         </div>
