@@ -1,6 +1,10 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import Home from '../views/Home.vue'
+
+import userhome from 'views/user/userhome'
+import userinfo from 'views/user/userinfo'
+import userchange from 'views/user/userchange'
+import user_stgyl from 'views/user/user_stgyl'
 
 Vue.use(VueRouter)
 
@@ -11,6 +15,23 @@ const routes = [
   //   name: 'home',
   //   component: Home
   // }
+    {
+    path: '/userhome',
+    name: 'userhome',
+    component: userhome
+  },{
+    path: '/userinfo',
+    name: 'userinfo',
+    component: userinfo
+  },{
+    path: '/userchange',
+    name: 'userchange',
+    component: userchange
+  },{
+    path: '/user_stgyl',
+    name: 'user_stgyl',
+    component: user_stgyl
+  }
 ]
 
 const router = new VueRouter({
