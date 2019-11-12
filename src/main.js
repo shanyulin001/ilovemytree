@@ -8,12 +8,6 @@ import 'vant/lib/index.css';
 Vue.use(Vant);
 
 
-import Vant from 'vant';
-import 'vant/lib/index.css';
-
-Vue.use(Vant);
-
-
 Vue.config.productionTip = false
 
 new Vue({

@@ -27,9 +27,6 @@
         <div class="btn" >
             <van-button type="info" size="large" to="userchange">修改信息</van-button>
         </div>
-        <div class="btn">
-            <van-button type="warning" size="large">退出登录</van-button>
-        </div>
     </div>
 </template>
 

@@ -20,11 +20,11 @@ Vue.use(VueRouter)
 
 const routes = [
   //格式
-  // {
-  //   path: '/',
-  //   name: 'home',
-  //   component: Home
-  // }
+    // {
+    // path: '/',
+    // name: 'home',
+    // component: Home
+    // },
     {
     path: '/userhome',
     name: 'userhome',
@@ -91,10 +91,10 @@ const routes = [
         name: 'jifendetails',
         component: jifendetails
     }]
-
-
-export default router = new VueRouter({
+const router = new VueRouter({
     mode: 'history',
     base: process.env.BASE_URL,
     routes
 })
+
+export default router
