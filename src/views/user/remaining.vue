@@ -1,7 +1,7 @@
 <template>
     <div>
         <!-- 余额页面 -->
-        <div class="header">
+        <div class="remaininghead">
             <div class="van-doc-nav-bar van-nav-bar" style="z-index: 1;">
                 <div class="van-nav-bar__left">
                     <router-link to="/userhome" tag="i">
@@ -17,19 +17,19 @@
         <div>
             <div class="myyue">
                 <p class="rmb">账户余额（元）</p>
-                <p>2000.00</p>
+                <p class="yuenum">2000.00</p>
             </div>
 
         </div>
         
-        <van-button plain hairline type="info" size="large" to="/tixian" round style="width:90%;margin-top:15px;">提现</van-button>
+        <van-button plain hairline type="info" size="large" to="/tixian" round style="display:block;width:90%;margin:25px auto;">提现</van-button>
 
     </div>
 </template>
 <style>
-.header{
-    border-bottom: 1px solid #ddd;
-}
+    .remaininghead{
+    border-bottom: 1px solid #bbb;
+    }
     .myyue{
         background: green;
         border-radius: 10px;
@@ -39,6 +39,11 @@
     }
     .rmb{
         margin-top: 50px;
+        text-align: center;
+        color: white;
     }
-   
+   .yuenum{
+       text-align: center;
+        color: white;
+   }
 </style>

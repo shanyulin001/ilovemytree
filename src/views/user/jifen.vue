@@ -9,14 +9,14 @@
                     </router-link>
                     </div>
                 <div class="van-nav-bar__title van-ellipsis" style="color:#fff">积分</div>
+                <router-link to="/jifenuse" tag="div">
                 <div class="van-nav-bar__right" style="color:#fff">？</div>
+                </router-link>
             </div>
             <div>
                 <p class="integral">188</p>
                 <div class="jifenbutton">
-                    <router-link to="/jifendetails" tag="div">
-                    <van-button round plain type="info" style="border-color:#fff;color:#fff;background:rgba(255,255,255,0)">积分明细</van-button>
-                 </router-link>
+                    <van-button round plain to="/jifendetails" type="info" style="border-color:#fff;color:#fff;background:rgba(255,255,255,0)">积分明细</van-button>
                 </div>
             </div>
         </div>
@@ -27,8 +27,15 @@
         color: #fff;
         line-height: 50px;
         font-size: 20px;
+        text-align: center;
+        margin: 10px 0;
     }
     .jifenbutton{
         padding:20px;
+       
+    }
+    .jifenbutton button{
+        display: block;
+         margin: 0 auto;
     }
 </style>

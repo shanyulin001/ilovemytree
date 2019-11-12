@@ -3,7 +3,7 @@
     <div>
       <div class="van-doc-nav-bar van-nav-bar" style="z-index: 1;">
         <div class="van-nav-bar__left">
-          <router-link to="/userhome" tag="i">
+          <router-link to="/shezhi" tag="i">
           <i class="van-icon van-icon-arrow-left van-nav-bar__arrow">
             <!---->
           </i>
@@ -24,7 +24,7 @@
     <div class="button1">
     <!-- <van-button round type="info">退出账号</van-button> -->
 
-    <van-button plain round hairline type="info" to="about">退出账号</van-button>
+    <van-button plain round hairline type="info" size="large" to="about" style="display:block;margin:0 auto;width:90%;text-align:center;">退出账号</van-button>
     </div>
   </div>
 </template>

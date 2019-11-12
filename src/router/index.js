@@ -10,6 +10,7 @@ import remainingdetail from '../views/user/remainingdetail' //余额明细
 import tixian from '../views/user/tixian' //提现界面
 import jifen from '../views/user/jifen' //积分首页界面
 import jifendetails from '../views/user/jifendetails' //积分明细界面
+import jifenuse from '../views/user/jifenuse' //积分用途界面
 Vue.use(VueRouter)
 
 const routes = [
@@ -68,7 +69,12 @@ const routes = [
         path: '/jifendetails',
         name: 'jifendetails',
         component: jifendetails
-    }
+    },
+    { //积分用途界面
+        path: '/jifenuse',
+        name: 'jifenuse',
+        component: jifenuse
+    },
 ]
 
 const router = new VueRouter({
