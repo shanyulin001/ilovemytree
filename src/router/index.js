@@ -16,32 +16,33 @@ import remainingdetail from '../views/user/remainingdetail' //余额明细
 import tixian from '../views/user/tixian' //提现界面
 import jifen from '../views/user/jifen' //积分首页界面
 import jifendetails from '../views/user/jifendetails' //积分明细界面
+import jifenuse from '../views/user/jifenuse' //积分用途界面
 Vue.use(VueRouter)
 
 const routes = [
-  //格式
+    //格式
     // {
     // path: '/',
     // name: 'home',
     // component: Home
     // },
     {
-    path: '/userhome',
-    name: 'userhome',
-    component: userhome
-    },{
-    path: '/userinfo',
-    name: 'userinfo',
-    component: userinfo
-    },{
-    path: '/userchange',
-    name: 'userchange',
-    component: userchange
-    },{
-    path: '/user_stgyl',
-    name: 'user_stgyl',
-    component: user_stgyl
-    },{ //设置页面
+        path: '/userhome',
+        name: 'userhome',
+        component: userhome
+    }, {
+        path: '/userinfo',
+        name: 'userinfo',
+        component: userinfo
+    }, {
+        path: '/userchange',
+        name: 'userchange',
+        component: userchange
+    }, {
+        path: '/user_stgyl',
+        name: 'user_stgyl',
+        component: user_stgyl
+    }, { //设置页面
         path: '/shezhi',
         name: 'shezhi',
         component: shezhi
@@ -90,7 +91,14 @@ const routes = [
         path: '/jifendetails',
         name: 'jifendetails',
         component: jifendetails
-    }]
+    },
+    { //积分用途界面
+        path: '/jifenuse',
+        name: 'jifenuse',
+        component: jifenuse
+    }
+]
+
 const router = new VueRouter({
     mode: 'history',
     base: process.env.BASE_URL,

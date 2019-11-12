@@ -1,5 +1,6 @@
 <template>
     <div>
+        <!-- 余额明细页面 -->
          <div class="header">
         <div class="van-doc-nav-bar van-nav-bar" style="z-index: 1;">
             <div class="van-nav-bar__left">
@@ -13,9 +14,24 @@
     </div>
     <div>
         <van-cell-group>
-  <van-cell title="平台充值" value="2019-11-11" label="余额：500.00" />
-  <van-cell title="平台充值" value="2019-11-11" label="余额：500.00" />
-  <van-cell title="平台充值" value="2019-11-11" label="余额：500.00" />
+  <van-cell title="平台充值" label="余额：500.00">
+      <div>
+          <p class="remaingtime">2019-11-11</p>
+          <p class="changenum">-100</p>
+      </div>
+  </van-cell>
+  <van-cell title="平台充值" label="余额：500.00">
+      <div>
+          <p class="remaingtime">2019-11-11</p>
+          <p class="changenum">+100</p>
+      </div>
+  </van-cell>
+  <van-cell title="平台充值" label="余额：500.00">
+      <div>
+          <p class="remaingtime">2019-11-11</p>
+          <p class="changenum">-100</p>
+      </div>
+  </van-cell>
 </van-cell-group>
     </div>
     <div><p class="phone">客服电话：110</p> </div>
@@ -24,6 +40,12 @@
 <style>
     .phone{
         font-size:12px;
-        margin-top: 200px;
+        color: #bbb;
+        margin-top: 100px;
+        text-align: center;
     }
+    .remaingtime, .changenum{
+        margin: 0;
+    }
+
 </style>
