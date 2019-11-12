@@ -1,7 +1,15 @@
 <template>
     <div>
          <div class="header">
-        <div class="van-doc-nav-bar van-nav-bar" style="z-index: 1;"><div class="van-nav-bar__left"><i class="van-icon van-icon-arrow-left van-nav-bar__arrow"><!----></i></div><div class="van-nav-bar__title van-ellipsis">余额明细</div><div class="van-nav-bar__right"></div></div>
+        <div class="van-doc-nav-bar van-nav-bar" style="z-index: 1;">
+            <div class="van-nav-bar__left">
+                <router-link to="/remaining" tag="i">
+                <i class="van-icon van-icon-arrow-left van-nav-bar__arrow"><!----></i>
+                </router-link>
+            </div>
+            <div class="van-nav-bar__title van-ellipsis">余额明细</div>
+            <div class="van-nav-bar__right"></div>
+            </div>
     </div>
     <div>
         <van-cell-group>

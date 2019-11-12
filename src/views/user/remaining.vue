@@ -2,7 +2,17 @@
     <div>
         <!-- 余额页面 -->
         <div class="header">
-            <div class="van-doc-nav-bar van-nav-bar" style="z-index: 1;"><div class="van-nav-bar__left"><i class="van-icon van-icon-arrow-left van-nav-bar__arrow"><!----></i></div><div class="van-nav-bar__title van-ellipsis">我的余额</div><div class="van-nav-bar__right">明细</div></div>
+            <div class="van-doc-nav-bar van-nav-bar" style="z-index: 1;">
+                <div class="van-nav-bar__left">
+                    <router-link to="/userhome" tag="i">
+                    <i class="van-icon van-icon-arrow-left van-nav-bar__arrow"><!----></i>
+                    </router-link>
+                    </div>
+                    <div class="van-nav-bar__title van-ellipsis">我的余额</div>
+                    <router-link to="/remainingdetail" tag="div">
+                    <div class="van-nav-bar__right">明细</div>
+                    </router-link>
+                    </div>
         </div>
         <div>
             <div class="myyue">
@@ -11,7 +21,9 @@
             </div>
 
         </div>
-        <van-button plain hairline type="info"  size="large" round style="width:90%;margin-top:15px;">提现</van-button>
+        
+        <van-button plain hairline type="info" size="large" to="/tixian" round style="width:90%;margin-top:15px;">提现</van-button>
+
     </div>
 </template>
 <style>

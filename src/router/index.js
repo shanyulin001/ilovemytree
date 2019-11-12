@@ -8,6 +8,8 @@ import agreement from '../views/user/agreement' //平台协议
 import remaining from '../views/user/remaining' //账户余额
 import remainingdetail from '../views/user/remainingdetail' //余额明细
 import tixian from '../views/user/tixian' //提现界面
+import jifen from '../views/user/jifen' //积分首页界面
+import jifendetails from '../views/user/jifendetails' //积分明细界面
 Vue.use(VueRouter)
 
 const routes = [
@@ -56,6 +58,16 @@ const routes = [
         path: '/tixian',
         name: 'tixian',
         component: tixian
+    },
+    { //积分首页界面
+        path: '/jifen',
+        name: 'jifen',
+        component: jifen
+    },
+    { //积分明细界面
+        path: '/jifendetails',
+        name: 'jifendetails',
+        component: jifendetails
     }
 ]
 
