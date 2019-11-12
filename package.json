@@ -25,5 +25,17 @@
     "eslint": "^5.16.0",
     "eslint-plugin-vue": "^5.0.0",
     "vue-template-compiler": "^2.6.10"
-  }
+  },
+  "description": "```\r yarn install\r ```",
+  "main": ".eslintrc.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/shanyulin001/ilovemytree.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/shanyulin001/ilovemytree/issues"
+  },
+  "homepage": "https://github.com/shanyulin001/ilovemytree#readme"
 }
