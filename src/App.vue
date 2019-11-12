@@ -1,32 +1,43 @@
 <template>
   <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
     <router-view/>
+ <van-tabbar v-model="active" active-color='#3bc698'>
+ <router-link class='change' to="/" > <van-tabbar-item icon="flag-o">生态林 </van-tabbar-item></router-link> 
+  <router-link class='change'   to="/oldtree"><van-tabbar-item icon="brush-o"> 古木名树</van-tabbar-item></router-link> 
+ <router-link class='change'  to="/feature" > <van-tabbar-item icon="diamond-o">特色认养</van-tabbar-item></router-link> 
+ <router-link class='change' to='/forest ' > <van-tabbar-item icon="manager-o">生态林 </van-tabbar-item></router-link> 
+  
+</van-tabbar>
   </div>
 </template>
+<script>
+export default {
+data() {
+  return {
+    btall:[
+      {id:1,name:'生态林',pathname:'/'},
+       {id:2,name:'古木名树',pathname:'/oldtree'},
+        {id:3,name:'特色认养',pathname:'/'},
+        {id:4,我的:'生态林',pathname:'/'},
+    ],
+    active: 0
+  }
+},
 
-<style>
+}
+</script>
+<style scoped>
 #app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
+  position:relative;
+}
+.change{
+  display:block;
+}
+.van-tabbar{
+  justify-content: space-around;
+      align-items: center;
 }
 
-#nav {
-  padding: 30px;
-}
 
-#nav a {
-  font-weight: bold;
-  color: #2c3e50;
-}
 
-#nav a.router-link-exact-active {
-  color: #42b983;
-}
 </style>
