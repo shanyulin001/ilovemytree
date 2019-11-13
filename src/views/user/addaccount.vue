@@ -27,29 +27,26 @@
                                 <van-dropdown-item v-model="value2" :options="option2" />
                             </van-dropdown-menu>
                         </van-cell>
-                        <van-field v-model="username" clearable label="开户支行" placeholder="请输入开户支行"/>
-                        <van-field v-model="username" clearable label="银行卡号" placeholder="请输入银行卡号"/>
-                        <van-field v-model="username" clearable label="确认账号" placeholder="请确认开户支行"/>
+                        <van-field v-model="where" clearable label="开户支行" placeholder="请输入开户支行"/>
+                        <van-field v-model="cardnumber" clearable label="银行卡号" placeholder="请输入银行卡号"/>
+                        <van-field v-model="cardnumber1" clearable label="确认账号" placeholder="请确认开户支行"/>
                         <van-cell-group title="请填写银行预留信息">
                         <van-field v-model="username" clearable label="持卡人" placeholder="持卡人姓名"/>
-                        <van-field v-model="username" clearable label="手机号" placeholder="银行预留手机号"/>
+                        <van-field v-model="userphone" clearable label="手机号" placeholder="银行预留手机号"/>
                         </van-cell-group>
                     </div>
                 </div>
                 <div v-else>
                         <!-- 支付宝时显示的页面 -->
                     <div class="withalipay">
-                        <van-field v-model="username" clearable label="账号" placeholder="请输入支付宝账号"/>
+                        <van-field v-model="alipaynumber" clearable label="账号" placeholder="请输入支付宝账号"/>
                         <van-cell-group title="请填写支付宝账号信息">
-                        <van-field v-model="username" clearable label="姓名" placeholder="实名认证姓名"/>
-                        <van-field v-model="username" clearable label="手机号" placeholder="手机号"/>
+                        <van-field v-model="alipayusername" clearable label="姓名" placeholder="实名认证姓名"/>
+                        <van-field v-model="alipayuserphone" clearable label="手机号" placeholder="手机号"/>
                         </van-cell-group> 
                     </div>
-                </div>
-                
-            </van-cell-group>
-            
-            
+                </div>             
+            </van-cell-group>           
         </div>
     </div>
 </template>
@@ -72,7 +69,15 @@ export default {
         { text: '中国交通银行', value: 'e' },
         { text: '中国邮政储蓄银行', value: 'f' },
         { text: '其他银行', value: 'g' },
-      ]
+      ],
+        where:'',
+        cardnumber:'',
+        cardnumber1:'',
+        username:'',
+        userphone:'',
+        alipaynumber:'',
+        alipayusername:'',
+        alipayuserphone:''
     }
   },
   mounted(){
