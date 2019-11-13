@@ -11,10 +11,7 @@
         <div class='delect' v-if='empty'>
           <van-icon @click='clearphone' name="clear" />
         </div>
-      
       </div>
-      
-
       <div>
         <label class='lock'>
           <van-icon name="bag-o" />
