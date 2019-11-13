@@ -6,7 +6,11 @@
             <router-link to="/shezhi" tag="i">
                     <i style="color:grey" class="van-icon van-icon-arrow-left van-nav-bar__arrow"><!----></i>
                     </router-link>
-            </div><div class="van-nav-bar__title van-ellipsis">提现资料</div><div class="van-nav-bar__right">+</div></div>
+            </div><div class="van-nav-bar__title van-ellipsis">提现资料</div>
+            <router-link to="/addaccount" tag="div">
+            <div class="van-nav-bar__right" style="font-size:18px;"> + </div>
+              </router-link>  
+            </div>
     </div>
     <!-- 当没有绑定银行卡时显示页面 -->
     <div class="withoutpic">

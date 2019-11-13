@@ -17,6 +17,7 @@ import tixian from '../views/user/tixian' //提现界面
 import jifen from '../views/user/jifen' //积分首页界面
 import jifendetails from '../views/user/jifendetails' //积分明细界面
 import jifenuse from '../views/user/jifenuse' //积分用途界面
+import addaccount from '../views/user/addaccount' //添加银行卡
 Vue.use(VueRouter)
 
 const routes = [
@@ -96,7 +97,12 @@ const routes = [
         path: '/jifenuse',
         name: 'jifenuse',
         component: jifenuse
-    }
+    },
+    { //添加银行卡
+        path: '/addaccount',
+        name: 'addaccount',
+        component: addaccount
+    },
 ]
 
 const router = new VueRouter({
