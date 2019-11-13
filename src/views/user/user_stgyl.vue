@@ -32,7 +32,7 @@
                         <van-col span='7'>{{ item.key }}</van-col>
                         <van-col span='7'>到期时间</van-col>
                         <van-col span='5'>
-                            <van-button type="primary" round style="height: 28px;line-height:28px;">导航</van-button>
+                            <van-button type="primary" round style="height: 28px;line-height:28px;" to="guide">导航</van-button>
                         </van-col>
                     </van-row>
                 </div>

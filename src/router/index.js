@@ -5,6 +5,7 @@ import userhome from 'views/user/userhome'
 import userinfo from 'views/user/userinfo'
 import userchange from 'views/user/userchange'
 import user_stgyl from 'views/user/user_stgyl'
+import guide from 'views/user/guide'
 
 Vue.use(VueRouter)
 
@@ -31,6 +32,10 @@ const routes = [
     path: '/user_stgyl',
     name: 'user_stgyl',
     component: user_stgyl
+  },{
+    path: '/guide',
+    name: 'guide',
+    component: guide
   }
 ]
 
