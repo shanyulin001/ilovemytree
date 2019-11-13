@@ -6,9 +6,7 @@
     </div>
     <form>
       <div class='phone'>
-     
-          <span class="mui-icon mui-icon-phone phonepic"></span>
-        
+          <span class="mui-icon mui-icon-phone phonepic"></span>       
         <input type="text" v-model='phone' placeholder="输入手机号" />
         <div class='delect' v-if='empty'>
           <van-icon @click='clearphone' name="clear" />
