@@ -1,6 +1,6 @@
 <template>
     <div >
-        <div class="header">
+        <div class="myallheader">
         <div class="van-doc-nav-bar van-nav-bar" style="z-index: 1;">
             <div class="van-nav-bar__left">
                 <router-link to="/remaining" tag="i">
@@ -14,15 +14,16 @@
     <div style="text-align:left">
         <van-cell title="支付宝" is-link value="15522708121" />
         <van-cell title="提现金额(￥)">
-                <input type="text" placeholder="请输入提现金额" class="inputyue">
+                <input type="text" placeholder="请输入提现金额" v-model="allrmb" class="inputyue">
         </van-cell>
         <van-cell title="可提现金额：500元" label="提现手续费：1元">
             <div>
-            <van-button round size="small">全部提现</van-button>
+            <van-button round size="small" v-on:click="alltixian">全部提现</van-button>
             <p class="reallynum">实际到账金额：499</p>
             </div>
             </van-cell>
     </div>
+    <p v-model="allrmb"></p>
     <ul class="explain" style="margin-top:10px;">
         <li>1.周一至周五17：00前的提现当天到账，17：00后的提现次日到账，节假日提现顺延至工作日处理；</li>
         <li>2.每笔提现金额将收取手续费0.2%；</li>
@@ -58,3 +59,19 @@
         color: grey;
     }
 </style>
+<script>
+export default {
+    data(){
+        return {
+            allrmb:''
+        }
+    },
+    methods: {
+        alltixian:function(){
+            return {
+            allrmb:500
+        }
+        }
+    }
+}
+</script>

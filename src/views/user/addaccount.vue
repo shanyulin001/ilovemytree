@@ -46,7 +46,10 @@
                         </van-cell-group> 
                     </div>
                 </div>             
-            </van-cell-group>           
+            </van-cell-group> 
+            <div class="jifenbutton">
+                    <van-button round plain to="/jifendetails" type="info" style="border-color:#fff;color:#fff;background:rgba(255,255,255,0)">积分明细</van-button>
+                </div>          
         </div>
     </div>
 </template>
