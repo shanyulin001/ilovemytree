@@ -20,7 +20,7 @@
                     </van-dropdown-menu>
                 </van-cell>
                 <!-- 银行卡时显示的页面 -->
-                <div :v-if="value1==0">
+                <div v-if="value1==0">
                     <div class="withbankcard">
                         <van-cell title="银行卡">
                             <van-dropdown-menu>
@@ -36,7 +36,7 @@
                         </van-cell-group>
                     </div>
                 </div>
-                <div :v-else-if="value1==1">
+                <div v-else>
                         <!-- 支付宝时显示的页面 -->
                     <div class="withalipay">
                         <van-field v-model="username" clearable label="账号" placeholder="请输入支付宝账号"/>
