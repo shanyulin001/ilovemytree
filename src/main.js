@@ -16,11 +16,16 @@ Vue.use(Area);
 Vue.use(Icon);
 
 Vue.use(Swipe).use(SwipeItem);
+import Vant from 'vant';
+import 'vant/lib/index.css';
+
+Vue.use(Vant);
+
 
 Vue.config.productionTip = false
 
 new Vue({
-  router,
-  store,
-  render: h => h(App)
+    router,
+    store,
+    render: h => h(App)
 }).$mount('#app')
