@@ -7,7 +7,17 @@ import { Icon } from 'vant';
 import { Area } from 'vant';
 import { Popup } from 'vant';
 import { Tabbar, TabbarItem } from 'vant';
+import { Button } from 'vant';
+import Router from 'vue-router'
+import Vant from 'vant';
+import 'vant/lib/index.css';
 
+Vue.use(Vant);
+const routerPush = Router.prototype.push
+Router.prototype.push = function push(location) {
+    return routerPush.call(this, location).catch(error => error)
+}
+Vue.use(Button);
 Vue.use(Tabbar).use(TabbarItem);
 
 Vue.use(Popup);
@@ -16,10 +26,11 @@ Vue.use(Area);
 Vue.use(Icon);
 
 Vue.use(Swipe).use(SwipeItem);
-import Vant from 'vant';
-import 'vant/lib/index.css';
 
-Vue.use(Vant);
+
+
+
+
 
 
 Vue.config.productionTip = false

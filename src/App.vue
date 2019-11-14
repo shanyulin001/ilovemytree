@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <router-view/>
- <van-tabbar v-model="active" active-color='#3bc698'>
+ <van-tabbar v-model="active" active-color='#3bc698' v-if='see'>
  <router-link class='change' to="/" > <van-tabbar-item icon="flag-o">生态林 </van-tabbar-item></router-link> 
   <router-link class='change'   to="/oldtree"><van-tabbar-item icon="brush-o"> 古木名树</van-tabbar-item></router-link> 
  <router-link class='change'  to="/feature" > <van-tabbar-item icon="diamond-o">特色认养</van-tabbar-item></router-link> 
@@ -11,6 +11,7 @@
   </div>
 </template>
 <script>
+import {mapState} from 'vuex'
 export default {
 data() {
   return {
@@ -22,6 +23,9 @@ data() {
     ],
     active: 0
   }
+},
+computed: {
+  ...mapState(['see'])
 },
 
 }

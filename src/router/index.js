@@ -1,29 +1,16 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-<<<<<<< HEAD
 import tree from '../views/tree'
 import oldtree from '../views/oldtree'
-Vue.use(VueRouter)
-
-const routes = [
-  //格式
-  {
-    path: '/',
-    name: 'tree',
-    component: tree
-  },
-  {
-    path:'/oldtree',
-    name:"oldtree",
-    component:oldtree
-  }
-=======
+import rj from '../views/rj'
+import Gong from '../views/gong'
+import Fu from '../views/fu'
+import Song from '../views/song'
 
 import userhome from 'views/user/userhome'
 import userinfo from 'views/user/userinfo'
 import userchange from 'views/user/userchange'
 import user_stgyl from 'views/user/user_stgyl'
-
 import shezhi from '../views/user/shezhi' //设置页面
 import account from '../views/user/account' //账号与安全
 import withdrawdeposit from '../views/user/withdrawdeposit' //提现资料
@@ -44,6 +31,16 @@ const routes = [
     // name: 'home',
     // component: Home
     // },
+    {
+        path: '/tree',
+        name: 'tree',
+        component: tree
+    },
+    {
+        path: '/oldtree',
+        name: "oldtree",
+        component: oldtree
+    },
     {
         path: '/userhome',
         name: 'userhome',
@@ -114,8 +111,87 @@ const routes = [
         path: '/jifenuse',
         name: 'jifenuse',
         component: jifenuse
-    }
->>>>>>> develop
+    },
+    {
+        path: '/tree/renyang',
+        name: 'renyang',
+        component: () =>
+            import ('../views/renyang')
+    },
+    {
+        path: '/feature',
+        name: 'feature',
+        component: () =>
+            import ('../views/feature')
+    },
+    {
+        path: '/culture',
+        name: 'culture',
+        component: () =>
+            import ('../views/culture')
+    },
+    {
+        path: '/tree/xys',
+        name: 'xys',
+        component: () =>
+            import ('../views/xys')
+    },
+    {
+        path: '/tree/xys/rj',
+        name: 'rj',
+        component: rj
+    },
+    {
+        path: '/',
+        redirect: '/tree'
+    },
+    {
+        path: '/tree/xys/make',
+        name: 'make',
+        component: () =>
+            import ('../views/make')
+    },
+    {
+        path: '/tree/xys/eee',
+        name: 'eee',
+        component: () =>
+            import ('../views/eee')
+
+    },
+    // { path:'',
+    // name:'',
+    //  component:  
+    // },
+
+    {
+        path: '/tree/xys/fx',
+
+        component: () =>
+            import ('../views/aspiration'),
+        children: [{
+                path: '/',
+                name: 'gong',
+                component: Gong
+            }, {
+                path: 'fu',
+                name: 'fu',
+                component: Fu
+            },
+            {
+                path: 'song',
+                name: 'song',
+                component: Song
+            }
+        ]
+    },
+
+
+
+    // {
+    //   path:'/tree/:id',
+    //   name:'parti',
+    //   component:()=>import('../views/parti')
+    // }
 ]
 
 const router = new VueRouter({

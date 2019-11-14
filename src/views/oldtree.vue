@@ -10,7 +10,7 @@
         <div class='bott'>
 <div class='tell'>
  <span style="font-size:14px; font-weight: bolder;">古树古木认养</span>
-  <span style="font-size:12px;color:#dcdcdc">项目介绍<van-icon name="arrow" /></span>
+  <span style="font-size:12px;color:#dcdcdc" @click='go'>项目介绍<van-icon name="arrow" /></span>
 </div>
 <div class='area' is-link> <span ref='qy'  @click="showPopup"  style="font-size:12px;color:#ececec;margin-right:10px;">区域<van-icon name="arrow-down" /></span>
 <span  style="font-size:12px;color:#ececec;">综合排序<van-icon name="arrow-down" /></span>
@@ -81,6 +81,10 @@ methods: {
     },
     cancel(){
          this.show=false
+    },
+       go(){
+        console.log(1)
+        this.$router.push({name:'renyang'})
     }
 },
 }
