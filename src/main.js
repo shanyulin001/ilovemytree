@@ -7,7 +7,15 @@ import { Icon } from 'vant';
 import { Area } from 'vant';
 import { Popup } from 'vant';
 import { Tabbar, TabbarItem } from 'vant';
+import { Button } from 'vant';
+import Router from 'vue-router'
+const routerPush = Router.prototype.push
+Router.prototype.push = function push(location) {
+return routerPush.call(this, location).catch(error=> error)
+}
 
+
+Vue.use(Button);
 Vue.use(Tabbar).use(TabbarItem);
 
 Vue.use(Popup);
