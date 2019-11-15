@@ -48,7 +48,7 @@
                 </div>             
             </van-cell-group> 
             <div class="jifenbutton">
-                    <van-button round plain to="/jifendetails" type="info" style="border-color:#fff;color:#fff;background:rgba(255,255,255,0)">积分明细</van-button>
+                    <van-button v-on:click="tianjiacard" round plain type="info" style="display:block;width:90%;margin:25px auto;">添加</van-button>  
                 </div>          
         </div>
     </div>
@@ -60,6 +60,7 @@ export default {
     return {
       value1: 0,
       value2: 'a',
+      show: true,
       option1: [
         { text: '银行卡', value: 0 },
         { text: '支付宝', value: 1 },
@@ -83,8 +84,19 @@ export default {
         alipayuserphone:''
     }
   },
-  mounted(){
+  methods:{
+      tianjiacard:function(){
+          this.$dialog.confirm({
+            title: '确定账号',
+            message: '请确认添加账号的信息'
+        }).then(() => {
+                console.log(123)//确定
+            }).catch(() => {
+            console.log(321)//取消
+});
+          }
+      
 
-  }
+      }
 }
 </script>

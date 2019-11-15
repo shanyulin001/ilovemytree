@@ -21,10 +21,10 @@
             </div>
 
         </div>
-        
         <van-button plain hairline type="info" size="large" to="/tixian" round style="display:block;width:90%;margin:25px auto;">提现</van-button>
-
     </div>
+    
+
 </template>
 <style>
     .remaininghead{
@@ -47,3 +47,12 @@
         color: white;
    }
 </style>
+<script>
+export default {
+    data() {
+    return {
+      show: false
+    }
+}
+}
+</script>

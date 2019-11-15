@@ -23,7 +23,7 @@
             </div>
             </van-cell>
     </div>
-    <p v-model="allrmb"></p>
+    <p></p>
     <ul class="explain" style="margin-top:10px;">
         <li>1.周一至周五17：00前的提现当天到账，17：00后的提现次日到账，节假日提现顺延至工作日处理；</li>
         <li>2.每笔提现金额将收取手续费0.2%；</li>
