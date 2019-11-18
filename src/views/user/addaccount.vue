@@ -1,5 +1,6 @@
 <template>
     <div>
+        <!-- 添加银行卡，支付宝页面 -->
         <div>
             <div class="van-doc-nav-bar van-nav-bar" style="z-index: 1;">
                 <div class="van-nav-bar__left">
@@ -24,10 +25,10 @@
                     <div class="withbankcard">
                         <van-cell title="银行卡">
                             <van-dropdown-menu>
-                                <van-dropdown-item v-model="value2" :options="option2" />
+                                <van-dropdown-item v-model="text" :options="option2" />
                             </van-dropdown-menu>
                         </van-cell>
-                        <van-field v-model="where" clearable label="开户支行" placeholder="请输入开户支行"/>
+                        <van-field v-model="where" clearable label="开户支行"  placeholder="请输入开户支行"/>
                         <van-field v-model="cardnumber" clearable label="银行卡号" placeholder="请输入银行卡号"/>
                         <van-field v-model="cardnumber1" clearable label="确认账号" placeholder="请确认开户支行"/>
                         <van-cell-group title="请填写银行预留信息">
@@ -39,33 +40,55 @@
                 <div v-else>
                         <!-- 支付宝时显示的页面 -->
                     <div class="withalipay">
-                        <van-field v-model="alipaynumber" clearable label="账号" placeholder="请输入支付宝账号"/>
+                        <van-field v-model="cardnumber" clearable label="账号" placeholder="请输入支付宝账号"/>
                         <van-cell-group title="请填写支付宝账号信息">
-                        <van-field v-model="alipayusername" clearable label="姓名" placeholder="实名认证姓名"/>
-                        <van-field v-model="alipayuserphone" clearable label="手机号" placeholder="手机号"/>
+                        <van-field v-model="username" clearable label="姓名" placeholder="实名认证姓名"/>
+                        <van-field v-model="userphone" clearable label="手机号" placeholder="手机号"/>
                         </van-cell-group> 
                     </div>
                 </div>             
             </van-cell-group> 
             <div class="jifenbutton">
-                    <van-button v-on:click="tianjiacard" round plain type="info" style="display:block;width:90%;margin:25px auto;">添加</van-button>  
+                <van-button  round plain v-on:click="tianjiacard" type="info" style="display:block;width:90%;margin:25px auto;">添加</van-button>
+                <van-dialog v-model="show1" title="确定账号信息" show-cancel-button>
+                <div v-if="value1==1">
+                    <p>
+                    添加账户类型：支付宝<br>
+                    账号：{{this.cardnumber}}<br>
+                    姓名：{{this.username}}<br>
+                    手机号:{{this.userphone}}<br>
+                    </p>
+                </div>
+                <div v-if="value1==0">
+                    <p>
+                       添加账户类型：银行卡<br>
+                 银行卡：{{this.value2}}<br>
+                 开户支行：{{this.where}}<br>
+                 银行卡号：{{this.cardnumber}}<br>
+                 持卡人姓名：{{this.username}}<br>
+                 银行预留手机号:{{this.userphone}}<br> 
+                    </p>
+                </div>
+                </van-dialog>
                 </div>          
         </div>
     </div>
 </template>
 <script>
-
+import axios from 'axios';
 export default {
      data() {
     return {
-      value1: 0,
-      value2: 'a',
-      show: true,
-      option1: [
+        value1: 0,
+        value2: 'a',
+        text:'中国农业银行',
+        show: true,
+        show1: false,
+        option1: [
         { text: '银行卡', value: 0 },
         { text: '支付宝', value: 1 },
-      ],
-      option2: [
+        ],
+        option2: [
         { text: '中国农业银行', value: 'a' },
         { text: '中国工商银行', value: 'b' },
         { text: '中国银行', value: 'c' },
@@ -81,21 +104,49 @@ export default {
         userphone:'',
         alipaynumber:'',
         alipayusername:'',
-        alipayuserphone:''
+        alipayuserphone:'',
+        submitcon:''
     }
   },
   methods:{
       tianjiacard:function(){
-          this.$dialog.confirm({
-            title: '确定账号',
-            message: '请确认添加账号的信息'
-        }).then(() => {
-                console.log(123)//确定
-            }).catch(() => {
-            console.log(321)//取消
-});
+        this.show1=true;
+         axios.post('/info/insertInfo',{uId:111,infotype:this.value1,bankname:this.value2,
+         Openbranch:this.where,Bankaccount:this.cardnumber,cardholder:this.username,phoneNum:this.userphone,}).then(() => {//余额
+            console.log(this.yuenum);  
+            this.$dialog.alert({
+            title: '提现',
+            message: `账户提现${this.allrmb}元成功`
+                }).then(() => {
+                this.reload;
+                console.log(123);//确定
+                })
+            });
+//         this.$Dialog.confirm({ 
+//             title: '确定账号信息',      
+//         }).then(() => {
+//                 console.log(123)//确定
+//             }).catch(() => {
+//             console.log(321)//取消
+// });
           }
-      
+       //    if(this.value==0){ 
+        //          this.submitcon=`添加账户类型：银行卡<br>
+        //          银行卡：${this.value2}<br>
+        //          开户支行：${this.where}<br>
+        //          银行卡号：${this.cardnumber}<br>
+        //          持卡人姓名：${this.username}<br>
+        //          银行预留手机号:${this.userphone}<br>
+        //          ` 
+        //     }
+        //     else if(this.value==1){
+        //          this.submitcon= `添加账户类型：支付宝<br>
+        //             账号：${this.alipaynumber}<br>
+        //             姓名：${this.alipayusername}<br>
+        //             手机号:${this.alipayuserphone}<br>
+        //          `
+        //     }
+  
 
       }
 }

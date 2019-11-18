@@ -1,5 +1,6 @@
 <template>
 <div>
+    <!-- 关于我们页面 -->
     <div class="aboutme">
         <div class="van-doc-nav-bar van-nav-bar" style="z-index: 1;"><div class="van-nav-bar__left">
             <router-link to="/shezhi" tag="i">
@@ -11,7 +12,7 @@
         <!-- 图标 -->
         <div>
             <!-- 图片 -->
-            <div class="aboutmepic"><img src="" alt=""></div>
+            <div class="aboutmepic"><img src="../../assets/tree123.jpg" alt=""></div>
             <!-- 版本号 -->
             <p class="version">我爱我树v1.0.3</p>
         </div>

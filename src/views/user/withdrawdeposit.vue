@@ -13,39 +13,46 @@
             </div>
     </div>
     <div v-if="yhkflag">
-        <!-- 当绑定银行卡时显示页面 -->
-        <div class="bankcardpage">
-            <!-- 银行卡 -->
-            <div class="bankcard">
+        <div>
+          <!-- 列表渲染 -->
+            <div v-for="item in bankcon" :key="item.index">
+                 <div v-if="bankcon.infotype==0">
+                     <div class="bankcard">
                 <!-- 第一行 -->
                 <div class="bankcardfirst">
-                    <p class="bankcardfirst1">中国农业银行</p>
-                    <p class="bankcardfirst2">天津</p>
+                    <p class="bankcardfirst1">{{bankcon.bankname}}</p>
+                    <p class="bankcardfirst2">{{bankcon.Bankaccount}}</p>
                 </div>
                 <!-- 银行卡号 -->
-                <p class="bankcardnum">6228 4800 2819 1880 971</p>
+                <p class="bankcardnum">{{bankcon.Bankaccount}}</p>
                 <!-- 用户名 -->
-                <p class="bankcarduser">曹志超</p>
+                <p class="bankcarduser">{{bankcon.cardholder}}</p>
+                </div>
+
+                 </div>
             </div>
-            <!-- 支付宝 -->
-            <div class="bankcard alipay">
+            <div v-if="bankcon.infotype==1">
+                <div class="bankcard alipay">
                 <!-- 第一行 -->
                 <div class="bankcardfirst">
                     <p class="bankcardfirst1">支付宝</p>
                     <p class="bankcardfirst2"></p>
                 </div>
                 <!-- 银行卡号 -->
-                <p class="bankcardnum">15522708121</p>
+                <p class="bankcardnum">{{bankcon.Bankaccount}}</p>
                 <!-- 用户名 -->
-                <p class="bankcarduser">曹志超</p>
+                <p class="bankcarduser">{{bankcon.cardholder}}</p>
             </div>
-        </div>
+            </div>
+            </div>
+        <!-- 当绑定银行卡时显示页面 -->
+    
     </div>
     <div v-else>
         <!-- 当没有绑定银行卡时显示页面 -->
         <div class="withoutpic">
             <div class="withoutpic1">
-            <div class="withoutpic2"><img src="" alt=""></div>
+            <div class="withoutpic2"><img src="../../assets/box1.png" alt=""></div>
             <div class="withoutpic3">
                 <p>当前还没有账号信息哦……</p>
                 <p>点击右上角添加</p>
@@ -59,12 +66,20 @@
 </template>
 
 <script>
+import axios from 'axios';
 export default {
     data() {
         return {
-            yhkflag:true
+            yhkflag:'',
+            bankcon:''
         }
     },
+     mounted () {//渲染
+        axios.get('/info/queryInfo',{uId:111}).then((result) => {//银行卡支付宝信息
+            this.bankcon=result.data.data;
+            this.yhkflag=true;
+        });            
+    }
 }
 </script>
 
@@ -82,8 +97,13 @@ export default {
 .withoutpic2{
     width: 80px;
     height: 80px;
-    border: 1px solid #aaa;
+    /* border: 1px solid #aaa; */
+    opacity: 0.5;
     margin: 0 auto;
+}
+.withoutpic2 img{
+    width: 100%;
+    height: 100%;
 }
 .withoutpic3{
     margin-top: 10px;

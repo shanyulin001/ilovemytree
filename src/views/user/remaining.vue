@@ -17,8 +17,9 @@
         <div>
             <div class="myyue">
                 <p class="rmb">账户余额（元）</p>
-                <p class="yuenum">2000.00</p>
+                <p class="yuenum">{{ser}}</p>
             </div>
+            <!-- {{movieList}}测试用 -->
 
         </div>
         <van-button plain hairline type="info" size="large" to="/tixian" round style="display:block;width:90%;margin:25px auto;">提现</van-button>
@@ -48,11 +49,18 @@
    }
 </style>
 <script>
+import axios from 'axios';
 export default {
     data() {
-    return {
-      show: false
+        return {
+            show: false,
+            ser:''//余额,
+            }
+        },
+    mounted () {//渲染
+        axios.post('/info/qryAcBalance/500',{uId:111}).then((result) => {//余额
+            this.ser=result.data.data.balance;//将余额数据存到ser中
+        });            
     }
-}
 }
 </script>

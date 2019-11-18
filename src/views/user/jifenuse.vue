@@ -24,7 +24,7 @@
             <!-- 图片 -->
             <div class="jifenusepic">
                 <div  class="jifenusepic1">
-                    <img src="" alt=""> 
+                    <img src="../../assets/jifenpic.jpg" alt=""> 
                 </div>
                <p class="publicuse">公益积分的用途</p>
             </div>
@@ -64,14 +64,18 @@
     }
     .jifenusepic{
         width: 92%;
+        padding: 5px;
     }
     .jifenusepic1{
+        margin-top:10px;
         width: 100%;
         height: 250px;
+        border-radius: 5px;
+        overflow: hidden;
     }
     .jifenusepic1 img{
         width: 100%;
-        height: 250px;
+        height: 100%;
     }
     .publicuse{
         line-height: 20px;
