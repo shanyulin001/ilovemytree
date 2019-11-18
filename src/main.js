@@ -4,11 +4,10 @@ import router from './router'
 import store from './store'
 import Vant from 'vant';
 import 'vant/lib/index.css';
-
-Vue.use(Vant);
-
+import axios from 'axios'
 import VueAMap from 'vue-amap';
-
+Vue.prototype.$http=axios
+Vue.use(Vant);
 Vue.use(VueAMap);
 VueAMap.initAMapApiLoader({
   key: '217ee093340f7fc824ab0ca4ba673f45',

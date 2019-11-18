@@ -6,9 +6,9 @@
         <van-cell-group>
             <router-link class="userinfo" to="/userinfo" tag="div">
                 <div class="headPortrait_box">
-                    <img src="../../assets/img/logo.png" alt="" style="height:80px;box-shadow: 50%">
+                    <img :src="imgurl" alt="" style="height:80px;box-shadow: 50%">
                 </div>
-                <span>用户名</span>
+                <span>{{nickname}}</span>
                 <i class="fa fa-angle-right fa-2x" style="display:inline-block;margin-right:10px"></i>
             </router-link>
         </van-cell-group>
@@ -23,6 +23,39 @@
     </div>
 </template>
 
+<script>
+    import API from 'api'
+    // import 'utils/cookie'
+    export default {
+        data() {
+            return {
+                imgurl:'',
+                nickname:'小胖',
+                userNumber:''
+            }
+        },
+        mounted() {
+            this.userNumber = sessionStorage.getItem('uID');
+            this.$http.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded'; 
+            const params = new URLSearchParams()
+            params.append('userNumber',this.userNumber)
+            this.$http({
+                url: API.user_info,
+                method: 'post',
+                data:params
+            })
+            .then( res => {
+                console.log( res.data )
+                if(res.data.message == 'success'){
+                    this.imgurl = res.data.data.headPortrait
+                    this.nickname = res.data.data.uNickname
+                }
+            })
+            .catch( err => console.log( err ));
+        },
+    }
+</script>
+
 <style>
 body{
     background: #f9f9f9
@@ -34,7 +67,7 @@ body{
         font-weight: 800
     }
     .userinfo{
-        height: 80px;
+        height: 100px;
         display: flex;
         align-items:center;
         justify-content:space-around;

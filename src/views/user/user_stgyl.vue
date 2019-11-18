@@ -11,14 +11,14 @@
         </van-cell-group>
         <div style="background:#fff;padding:10px 0;margin-top:10px">
             <div class="stgyl_user_left">
-                <img src="" alt="">
+                <img :src="imgurl" alt="" height="80px">
             </div>
             <div class="stgyl_user_right">
-                <p>用户id</p>
-                <span>已经累计认养{{ 30 }}棵，消耗碳20吨</span>
+                <p style="color:#009494;font-size:20px">{{nickname}}</p>
+                <span>已经累计认养{{ trees.length }}棵，消耗碳{{trees.length*10}}吨</span>
             </div>
         </div>
-        <van-tabs v-model="active">
+        <van-tabs>
             <van-tab title="我的树木">
                 <div class="treeList_box">
                     <van-row class="treeList_top one">
@@ -43,20 +43,58 @@
 </template>
 
 <script>
-export default {
-    data() {
-        return {
-            active:0,
-            trees:[{
-                name:'常青藤',
-                key:'0',
-            },{
-                name:'常青藤1',
-                key:'1',
-            }]
-        }
-    },
-}
+    import API from 'api'
+    export default {
+        data() {
+            return {
+                nickname:'',
+                userNumber:'',
+                imgurl:'',
+                trees:[{
+                    name:'常青藤',
+                    key:'0',
+                },{
+                    name:'常青藤1',
+                    key:'1',
+                }]
+            }
+        },
+        mounted() {
+            this.userNumber = sessionStorage.getItem('uID');
+            this.$http.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded';
+            const params = new URLSearchParams()
+            params.append('userNumber',this.userNumber)
+            //获取头像用户名
+            this.$http({
+                url: API.user_info,
+                method: 'post',
+                data:params
+            })
+            .then( res => {
+                console.log( res.data )
+                if(res.data.message == 'success'){
+                    this.imgurl = res.data.data.headPortrait
+                    this.nickname = res.data.data.uNickname
+                }
+            })
+            .catch( err => console.log( err ));
+            //获取订单详情
+            this.$http({
+                url: API.user_info,
+                method: 'git',
+                data:{
+                    uId:this.userNumber
+                }
+            })
+            .then( res => {
+                console.log( res.data )
+                if(res.data.message == '查询成功'){
+                    this.trees = res.data.data.trees
+                }
+            })
+            .catch( err => console.log( err ));
+        },
+    }
 </script>
 
 <style>
