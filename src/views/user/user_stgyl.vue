@@ -11,14 +11,14 @@
         </van-cell-group>
         <div style="background:#fff;padding:10px 0;margin-top:10px">
             <div class="stgyl_user_left">
-                <img src="" alt="">
+                <img :src="imgurl" alt="" height="80px">
             </div>
             <div class="stgyl_user_right">
-                <p>用户id</p>
-                <span>已经累计认养{{ 30 }}棵，消耗碳20吨</span>
+                <p style="color:#009494;font-size:20px">{{nickname}}</p>
+                <span>已经累计认养{{ trees.length }}棵，消耗碳{{trees.length*10}}吨</span>
             </div>
         </div>
-        <van-tabs v-model="active">
+        <van-tabs>
             <van-tab title="我的树木">
                 <div class="treeList_box">
                     <van-row class="treeList_top one">
@@ -28,35 +28,89 @@
                         <van-col span='5'>导航</van-col>
                     </van-row>
                     <van-row class="treeList_top" v-for="(item,index) in trees" :key="index">
-                        <van-col span='5'>{{ item.name }}</van-col>
-                        <van-col span='7'>{{ item.key }}</van-col>
+                        <van-col span='5'>{{ item.treeName }}</van-col>
+                        <van-col span='7'>{{ item.oId }}</van-col>
+                        <van-col span='7'>{{ item.claimTime }}</van-col>
+                        <van-col span='5'>
+                            <van-button type="primary" round style="height: 28px;line-height:28px;" :to="{'name':'guide','query':{'oId':item.oId}}">导航</van-button>
+                        </van-col>
+                    </van-row>
+                </div>
+            </van-tab>
+            <van-tab title="认养记录">
+                <div class="treeList_box">
+                    <van-row class="treeList_top one">
+                        <van-col span='5'>树名</van-col>
+                        <van-col span='7'>编号</van-col>
                         <van-col span='7'>到期时间</van-col>
+                        <van-col span='5'>导航</van-col>
+                    </van-row>
+                    <van-row class="treeList_top" v-for="(item,index) in trees" :key="index">
+                        <van-col span='5'>{{ item.treeName }}</van-col>
+                        <van-col span='7'>{{ item.oId }}</van-col>
+                        <van-col span='7'>{{ item.claimTime }}</van-col>
                         <van-col span='5'>
                             <van-button type="primary" round style="height: 28px;line-height:28px;" to="guide">导航</van-button>
                         </van-col>
                     </van-row>
                 </div>
             </van-tab>
-            <van-tab title="认养记录">暂无</van-tab>
         </van-tabs>
     </div>
 </template>
 
 <script>
-export default {
-    data() {
-        return {
-            active:0,
-            trees:[{
-                name:'常青藤',
-                key:'0',
-            },{
-                name:'常青藤1',
-                key:'1',
-            }]
-        }
-    },
-}
+    import API from 'api'
+    export default {
+        data() {
+            return {
+                nickname:'',
+                userNumber:'15258469872',
+                imgurl:'',
+                trees:[{
+                    treeId:111,
+                    oId:111,
+                    treeName:'111',
+                    claimTime:"1111"
+                },{
+                    name:'常青藤1',
+                    key:'1',
+                }]
+            }
+        },
+        created() {
+            // this.userNumber = sessionStorage.getItem('uID');
+            const params = new URLSearchParams()
+            params.append('userNumber',this.userNumber.toString())
+            //获取头像用户名
+            this.$http({
+                url: API.user_info,
+                method: 'post',
+                data:params
+            })
+            .then( res => {
+                if(res.data.message == 'success'){
+                    this.imgurl = res.data.data.headPortrait
+                    this.nickname = res.data.data.uNickname
+                }
+            })
+            .catch( err => console.log( err ));
+            //获取订单详情
+            this.$http({
+                url: API.user_info,
+                method: 'get',
+                data:{
+                    uId:this.userNumber
+                }
+            })
+            .then( res => {
+                if(res.data.message == '查询成功'){
+                    this.trees = res.data.data.trees
+                }
+            })
+            .catch( err => console.log( err ));
+        },
+    }
 </script>
 
 <style>

@@ -2,6 +2,7 @@
 
 const path = require('path')
 
+const ENV = require('./src/api/config')
 
 module.exports = {
     publicPath: './',
@@ -17,8 +18,14 @@ module.exports = {
                 ws: true,
                 changeOrigin: true
             },
+            '/store': {
+                target: ENV.DEV.BACK_END_URL,
+                ws: true,
+                changeOrigin: true
+            }
         }
     },
+
     chainWebpack: config => {
         config.resolve.alias
             .set('@', path.join(__dirname, './src'))
@@ -30,5 +37,6 @@ module.exports = {
             .set('store', path.join(__dirname, './src/store'))
             .set('utils', path.join(__dirname, './src/utils'))
             .set('views', path.join(__dirname, './src/views'))
-    }
+    },
+
 }

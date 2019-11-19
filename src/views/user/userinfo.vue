@@ -13,22 +13,60 @@
             <div class="headPortrait msc">
                 <span>头像</span>
                 <div class="hp_box">
-                    <img src="" alt="">
+                    <img :src="imgurl" alt="" height='80px'>
                 </div>
             </div>
-            <van-cell title="ID" value="123456789" />
-            <van-cell title="昵称" value="内容" />
-            <van-cell title="手机号" value="内容" />
-            <van-cell title="实名认证" value="内容" />
-            <van-cell title="性别" value="内容" />
-            <van-cell title="生日" value="内容" />
-            <van-cell title="收货地址" value="内容" />
+            <van-cell title="ID" :value="username" />
+            <van-cell title="昵称" :value="nickname" />
+            <van-cell title="手机号" :value="phone" />
+            <van-cell title="实名认证" :value="identity?'已实名':'未实名'" />
+            <van-cell title="性别" :value="radio?'男':'女'" />
+            <van-cell title="生日" :value="birthday" />
         </van-cell-group>
         <div class="btn" >
             <van-button type="info" size="large" to="userchange">修改信息</van-button>
         </div>
     </div>
 </template>
+
+<script>
+    import API from 'api'
+    export default {
+        data(){
+            return{
+                imgurl:'',
+                username:'',
+                nickname:'',
+                phone:'',
+                identity:'',
+                radio:'',
+                birthday:''
+            }
+        },
+        mounted() {
+            this.userNumber = sessionStorage.getItem('uID');
+            const params = new URLSearchParams()
+            params.append('userNumber',this.userNumber)
+            this.$http({
+                    url: API.user_info,
+                    method: 'post',
+                    data:params
+                })
+                .then( res => {
+                    if(res.data.message == 'success'){
+                        this.imgurl = res.data.data.headPortrait
+                        this.username = res.data.data.uId
+                        this.nickname = res.data.data.uNickname
+                        this.phone = res.data.data.userNumber
+                        this.identity = res.data.data.idCard
+                        this.radio = res.data.data.sex
+                        this.birthday = res.data.data.birthday
+                    }
+                })
+                .catch( err => console.log( err ));
+        },
+    }
+</script>
 
 <style>
     .hp_box{
