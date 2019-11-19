@@ -28,7 +28,33 @@ import    Song from '../views/song'
 Vue.use(VueRouter)
 
 const routes = [
+<<<<<<< HEAD
     { //设置页面
+=======
+    //格式
+    // {
+    // path: '/',
+    // name: 'home',
+    // component: Home
+    // },
+    {
+        path: '/userhome',
+        name: 'userhome',
+        component: userhome
+    }, {
+        path: '/userinfo',
+        name: 'userinfo',
+        component: userinfo
+    }, {
+        path: '/userchange',
+        name: 'userchange',
+        component: userchange
+    }, {
+        path: '/user_stgyl',
+        name: 'user_stgyl',
+        component: user_stgyl
+    }, { //设置页面
+>>>>>>> 76f50c6342f3be9e5dc0fcb6cd46056b9add2286
         path: '/shezhi',
         name: 'shezhi',
         component: shezhi
@@ -82,22 +108,6 @@ const routes = [
         path: '/jifenuse',
         name: 'jifenuse',
         component: jifenuse
-    }, {
-        path: '/userhome',
-        name: 'userhome',
-        component: userhome
-    }, {
-        path: '/userinfo',
-        name: 'userinfo',
-        component: userinfo
-    }, {
-        path: '/userchange',
-        name: 'userchange',
-        component: userchange
-    }, {
-        path: '/user_stgyl',
-        name: 'user_stgyl',
-        component: user_stgyl
     }, {
         path: '/guide',
         name: 'guide',
