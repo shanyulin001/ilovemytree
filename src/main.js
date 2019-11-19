@@ -2,23 +2,20 @@ import Vue from 'vue'
 import App from './App.vue'
 import router from './router'
 import store from './store'
-import Vant from 'vant';
-import 'vant/lib/index.css';
 import axios from 'axios'
 import VueAxios from 'vue-axios'
 import Router from 'vue-router'
+import Vant from 'vant';
+import 'vant/lib/index.css';
 import './lib/mui/css/mui.min.css'
 const routerPush = Router.prototype.push
 Router.prototype.push = function push(location) {
 return routerPush.call(this, location).catch(error=> error)
 }
-
 Vue.prototype.$http = axios
 Vue.use(VueAxios, axios);
-Vue.use(Vant);
 
 import VueAMap from 'vue-amap';
-Vue.use(Vant);
 Vue.use(VueAMap);
 VueAMap.initAMapApiLoader({
     key: '217ee093340f7fc824ab0ca4ba673f45',
@@ -36,6 +33,7 @@ VueAMap.initAMapApiLoader({
     v: '1.4.4'
 });
 
+Vue.use(Vant);
 Vue.config.productionTip = false
 new Vue({
     router,

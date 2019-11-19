@@ -19,6 +19,12 @@ import jifen from '../views/user/jifen' //积分首页界面
 import jifendetails from '../views/user/jifendetails' //积分明细界面
 import jifenuse from '../views/user/jifenuse' //积分用途界面
 import addaccount from '../views/user/addaccount' //添加银行卡
+import tree from '../views/tree'
+import oldtree from '../views/oldtree'
+import rj from '../views/rj'
+import   Gong from '../views/gong'
+import    Fu  from '../views/fu'
+import    Song from '../views/song'
 Vue.use(VueRouter)
 
 const routes = [
