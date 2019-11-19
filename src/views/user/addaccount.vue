@@ -50,7 +50,7 @@
             </van-cell-group> 
             <div class="jifenbutton">
                 <van-button  round plain v-on:click="tianjiacard" type="info" style="display:block;width:90%;margin:25px auto;">添加</van-button>
-                <van-dialog v-model="show1" title="确定账号信息" show-cancel-button>
+                <van-dialog v-model="show1" title="添加账户成功">
                 <div v-if="value1==1">
                     <p style=" padding: 15px;color: grey;">
                     添加账户类型：支付宝<br>
@@ -85,6 +85,7 @@
 <script>
 import axios from 'axios';
 export default {
+    inject:['reload'],
      data() {
     return {
         value1: 0,
@@ -120,7 +121,7 @@ export default {
             this.show1=true; 
             console.log(this.value2);
             console.log(123);//确定 
-            axios.post('/info/insertInfo',{uId:111,infotype:this.value1,bankname:this.value2,
+            axios.post('/info/insertInfo',{uId:500,infotype:this.value1,bankname:this.value2,
                 Openbranch:this.where,Bankaccount:this.cardnumber,cardholder:this.username,phoneNum:this.userphone,}).then(() => {//余额
                 console.log(this.yuenum); 
             });

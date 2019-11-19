@@ -12,7 +12,7 @@
             </div>
     </div>
     <div style="text-align:left">
-        <van-cell title="支付宝" is-link value="15522708121" />
+        <van-cell title="支付宝" is-link :value="numphone" />
         <van-cell title="提现金额(￥)">
                 <input type="text" placeholder="请输入提现金额" v-on:blur="shiqufocus" v-model="allrmb" value="allrmb" class="inputyue">
         </van-cell>
@@ -66,21 +66,18 @@ export default {
     data(){
         return {
             allrmb:'',
-            yuenum:''  
+            yuenum:'' ,
+            numphone:'' 
         }
     },
     mounted () {//渲染
-        axios.post('/info/user/userinfo',{uId:111}).then((result) => {//余额
+        axios.post('/user/userinfo',{userNumber:15258469872}).then((result) => {//余额
             this.yuenum=result.data.data.balance;//将数据存到yuenum中
+            this.numphone=result.data.data.userNumber;
             console.log(this.yuenum);
             // this.allrmb=this.yuenum;
         });          
     },
-    
-//   axios.get('/order/treeOrder',{params:{treeid:this.treeslist.treeId,treeName:this.treeslist.treeName,treeTypeId:this.treeslist.treeTypeId,orderAccount:this.treeslist.treePrice*this.value}}).then(result=>{
-//         this.treeSurelt=result.data.message;
-//         console.log(this.treeSurelt);
-//       })
 
 
     methods: {
@@ -92,7 +89,7 @@ export default {
             console.log(this.allrmb);
         },
         alltixian2:function(){
-            axios.post('/info/getAmt',{uId:111,balance:this.allrmb}).then(() => {//余额
+            axios.get('/info/getAmt',{bankaccount:15258469872,balance:this.allrmb}).then(() => {//余额
             console.log(this.yuenum);  
             this.$dialog.alert({
             title: '提现',
