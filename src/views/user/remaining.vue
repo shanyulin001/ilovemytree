@@ -17,14 +17,15 @@
         <div>
             <div class="myyue">
                 <p class="rmb">账户余额（元）</p>
-                <p class="yuenum">2000.00</p>
+                <p class="yuenum">{{ser}}</p>
             </div>
+            <!-- {{movieList}}测试用 -->
 
         </div>
-        
         <van-button plain hairline type="info" size="large" to="/tixian" round style="display:block;width:90%;margin:25px auto;">提现</van-button>
-
     </div>
+    
+
 </template>
 <style>
     .remaininghead{
@@ -47,3 +48,23 @@
         color: white;
    }
 </style>
+<script>
+import axios from 'axios';
+export default {
+    data() {
+        return {
+            show: false,
+            ser:''//余额,
+            }
+        },
+    mounted () {//渲染
+    //  axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded'; 
+    //         const params = new URLSearchParams()
+    //         params.append('userNumber',this.userNumber)
+
+        axios.post('/user/userinfo',{userNumber:'userNumber'}).then((result) => {//余额
+            this.ser=result.data.data.balance;//将余额数据存到ser中
+        });            
+    }
+}
+</script>

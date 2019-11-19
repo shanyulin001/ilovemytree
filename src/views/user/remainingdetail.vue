@@ -12,9 +12,27 @@
             <div class="van-nav-bar__right"></div>
             </div>
     </div>
-    <div>
+    
+    <!-- 列表渲染 -->
+     <!-- <van-cell-group>
+    <div v-for="item in numbers" :key="item.index">
+  <van-cell :title="item.desc" :label="'余额:'+item.balance">
+      <div>
+          <p class="remaingtime">{{item.createTime}}</p>
+          <p class="changenum">{{item.orderAmt}}</p>
+      </div>
+  </van-cell>
+    </div>
+    </van-cell-group> -->
+     <div>
         <van-cell-group>
-  <van-cell title="平台充值" label="余额：500.00">
+  <van-cell title="平台充值" label="余额：800.00">
+      <div>
+          <p class="remaingtime">2019-11-12</p>
+          <p class="changenum">+400</p>
+      </div>
+  </van-cell>
+  <van-cell title="平台提现" label="余额：400.00">
       <div>
           <p class="remaingtime">2019-11-11</p>
           <p class="changenum">-100</p>
@@ -22,14 +40,8 @@
   </van-cell>
   <van-cell title="平台充值" label="余额：500.00">
       <div>
-          <p class="remaingtime">2019-11-11</p>
+          <p class="remaingtime">2019-11-10</p>
           <p class="changenum">+100</p>
-      </div>
-  </van-cell>
-  <van-cell title="平台充值" label="余额：500.00">
-      <div>
-          <p class="remaingtime">2019-11-11</p>
-          <p class="changenum">-100</p>
       </div>
   </van-cell>
 </van-cell-group>
@@ -49,3 +61,19 @@
     }
 
 </style>
+// <script>
+// import axios from 'axios';
+// export default {
+//     data(){
+//         return{
+//             numbers:''
+//         }
+//     },
+//     mounted () {//渲染
+//         axios.post('/info/queryBalanceDetail',{uid:111}).then((result) => {//余额
+//             this.numbers=result.data.data.list;//将数据存到numbers中
+//             console.log(this.numbers[1].desc)
+//         });            
+//     }
+// }
+// </script>

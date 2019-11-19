@@ -14,7 +14,7 @@
                 </router-link>
             </div>
             <div>
-                <p class="integral">188</p>
+                <p class="integral">{{jifennum}}</p>
                 <div class="jifenbutton">
                     <van-button round plain to="/jifendetails" type="info" style="border-color:#fff;color:#fff;background:rgba(255,255,255,0)">积分明细</van-button>
                 </div>
@@ -39,3 +39,19 @@
          margin: 0 auto;
     }
 </style>
+<script>
+import axios from 'axios';
+export default {
+    data() {
+        return {
+           jifennum:''
+            }
+        },
+    mounted () {//渲染
+        axios.get('/info/scoreDetail',{uId:500}).then((result) => {//积分
+            this.jifennum=result.data.data.oTreeNum*5;//将积分数据存到jifennum中
+            console.log(result.data.data.oTreeNum);
+        });            
+    }
+}
+</script>

@@ -14,7 +14,7 @@
       </div>
     </div>
     <van-cell-group title="当前登录账号" class="account">
-      <van-cell title="手机号" label="15522708121" is-link/>
+      <van-cell title="手机号" :label="usernum" is-link/>
     </van-cell-group>
     <van-cell-group title="其他登录方式" class="account">
       <van-cell title="微信" value="已绑定" label="ID：110" is-link />
@@ -37,3 +37,19 @@
         background: #fff;
     }
 </style>
+<script>
+import axios from 'axios';
+export default {
+    data() {
+        return {
+           usernum:''
+            }
+        },
+    mounted () {//渲染
+        axios.post('/info/user/userinfo',{uid:111}).then((result) => {//用户
+            this.usernum=result.data.data.userNumber;//将用户手机号存到usernnum中
+            console.log(result.data.data.userNumber);
+        });            
+    }
+}
+</script>
