@@ -5,6 +5,7 @@ import userhome from 'views/user/userhome'
 import userinfo from 'views/user/userinfo'
 import userchange from 'views/user/userchange'
 import user_stgyl from 'views/user/user_stgyl'
+import guide from 'views/user/guide'
 
 import shezhi from '../views/user/shezhi' //设置页面
 import account from '../views/user/account' //账号与安全
@@ -96,6 +97,26 @@ const routes = [
         path: '/jifenuse',
         name: 'jifenuse',
         component: jifenuse
+    }, {
+        path: '/userhome',
+        name: 'userhome',
+        component: userhome
+    }, {
+        path: '/userinfo',
+        name: 'userinfo',
+        component: userinfo
+    }, {
+        path: '/userchange',
+        name: 'userchange',
+        component: userchange
+    }, {
+        path: '/user_stgyl',
+        name: 'user_stgyl',
+        component: user_stgyl
+    }, {
+        path: '/guide',
+        name: 'guide',
+        component: guide
     }
 ]
 

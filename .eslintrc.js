@@ -13,5 +13,11 @@ module.exports = {
   },
   parserOptions: {
     parser: 'babel-eslint'
+  },
+  "globals":{
+    "AMap":"AMap",
+    "particlesJs":true,
+    "expect":true,
+    "sinon":true
   }
 }
