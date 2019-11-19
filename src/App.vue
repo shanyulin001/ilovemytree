@@ -1,6 +1,10 @@
 <template>
   <div id="app">
+     <transition name='transitionRouter'>
+       <keep-alive>
     <router-view/>
+    </keep-alive>
+    </transition>
  <van-tabbar v-model="active" active-color='#3bc698' v-if='see'>
  <router-link class='change' to="/" > <van-tabbar-item icon="flag-o">生态林 </van-tabbar-item></router-link> 
   <router-link class='change'   to="/oldtree"><van-tabbar-item icon="brush-o"> 古木名树</van-tabbar-item></router-link> 
@@ -31,12 +35,15 @@ computed: {
 }
 </script>
 <style scoped>
+
 #app {
   position:relative;
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   color: #2c3e50;
+ height: 100%
+
 }
 .change{
   display:block;
@@ -45,7 +52,17 @@ computed: {
   justify-content: space-around;
       align-items: center;
 }
+ .transitionRouter-enter-active,
+.transitionRouter-leave-active {
+    transition: all 0.4s;
+}
 
+.transitionRouter-enter,
+.transitionRouter-leave{
+    transform: translate3d(100%, 0, 0);
+}
 
+    
+   
 
 </style>

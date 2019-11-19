@@ -19,10 +19,15 @@ export default new Vuex.Store({
     },
     eee(state){
       return state.see=false;
-    }
+    },
+    wenst(state){
+      return state.see=false;
+    },
   },
   actions: { 
-    
+    add(context,movie){
+      console.log(movie)
+    }
   },
   modules: {
   }

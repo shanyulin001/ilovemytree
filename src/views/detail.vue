@@ -1,20 +1,19 @@
-
 <template>
   <div class="xiang">
-    <div class="xiang_shu">
-      <van-nav-bar title="树的名字" left-arrow>
-        <!-- <van-icon name="search" slot="right" /> -->
+    <div class="xiang_shu" @click="back">
+      <van-nav-bar :title="this.$route.query.name"   left-arrow >
+            
       </van-nav-bar>
       <div class="xiang_img">
-        <img src="../../../img/1.jpg" alt />
+        <img src="../assets/1.jpg" alt />
       </div>
       <div class="xiang_ming">
         <ul>
-          <li>树名字</li>
-          <li>树龄111</li>
+          <li>{{this.$route.query.name}}</li>
+          <li>树龄{{this.$route.query.old}}</li>
           <li>园区</li>
         </ul>
-        <span>价格:88888</span>
+        <span>价格:{{this.$route.query.price}}</span>
       </div>
     </div>
     <!-- 历史典故 -->
@@ -29,11 +28,11 @@
       </p>
     </div>
     <div class="xiang_yi">
-      <img src="../../../img/2.jpg" alt />
+      <img src="../assets/2.jpg" alt />
     </div>
     <div class="xiang_xie">
       <van-radio-group v-model="radio">
-        <van-radio name="1">您已阅读生态林认养协议</van-radio>
+        <van-radio name="1" >您已阅读生态林认养协议</van-radio>
       </van-radio-group>
     </div>
     <div class="xiang_buttom">
@@ -45,36 +44,44 @@
       </van-goods-action>
     </div>
   </div>
+  
 </template>
 
 <script>
-// export default {
-//     data(){
-//         return{
-  
-//         }
-//     }
-// }
-
-import axios from 'axios';
+//import axios from 'axios';
 
 export default {
-    name:'parti',
     // 获取线上数据
-    data(){
+    data() {
      return {
-       movies:[]
+      movies:'',
+   
+      radio: "1"
      } 
     },
     mounted() {
-        axios.get("").then((result)=>{
-                   console.log(result),
-        this.movies= result.data.movieList
-        }
-        )
-    }}
+      //console.log(this.$route.query)
+      this.$store.commit('wenst')
+   },
+   updated() {
+   
+   },
+   methods: {
+     back(){
+       console.log(1)
+      // this.$router.push('/tree')
+    window.history.go(-1)
+    this.$store.commit('tree')
+     }
+   },
+  
+
+   }
 
 </script>
+
+
+
 <style scoped>
 .xing {
   width: 100%;
@@ -126,7 +133,7 @@ export default {
 .xiang_ming span {
   /* text-align: right; */
   position: relative;
-  top: -80px;
+  top: -50px;
   right: -100px;
   font-size: 20px;
   color: rgb(2, 36, 13);
@@ -181,12 +188,3 @@ export default {
 }
 </style>
 
-<script>
-export default {
-  data() {
-    return {
-      radio: "1"
-    };
-  }
-};
-</script>
