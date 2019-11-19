@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 
-import userhome from 'views/user/userhome'
+import userhome from '../views/user/userhome'
 import userinfo from 'views/user/userinfo'
 import userchange from 'views/user/userchange'
 import user_stgyl from 'views/user/user_stgyl'
@@ -29,23 +29,7 @@ const routes = [
     // component: Home
     // },
 
-    {
-        path: '/userhome',
-        name: 'userhome',
-        component: userhome
-    }, {
-        path: '/userinfo',
-        name: 'userinfo',
-        component: userinfo
-    }, {
-        path: '/userchange',
-        name: 'userchange',
-        component: userchange
-    }, {
-        path: '/user_stgyl',
-        name: 'user_stgyl',
-        component: user_stgyl
-    }, { //设置页面
+    { //设置页面
         path: '/shezhi',
         name: 'shezhi',
         component: shezhi
@@ -124,7 +108,7 @@ const routes = [
         path: '/addaccount',
         name: 'addaccount',
         component: addaccount
-    },
+    }
 ]
 
 const router = new VueRouter({

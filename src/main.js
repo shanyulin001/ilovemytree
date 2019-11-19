@@ -7,11 +7,11 @@ import 'vant/lib/index.css';
 import axios from 'axios'
 import VueAxios from 'vue-axios'
 
+Vue.prototype.$http = axios
 Vue.use(VueAxios, axios);
 Vue.use(Vant);
 
 import VueAMap from 'vue-amap';
-Vue.prototype.$http = axios
 Vue.use(Vant);
 Vue.use(VueAMap);
 VueAMap.initAMapApiLoader({
