@@ -67,7 +67,7 @@ export default {
     created() {
             this.tree_index=this.$route.query.oId
             this.$http({
-                url: API.user_info,
+                url: API.myTree,
                 method: 'get',
                 data:{
                     uId:this.$route.query.oId

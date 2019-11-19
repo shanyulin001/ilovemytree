@@ -9,16 +9,36 @@ module.exports = {
     devServer: {
         proxy: {
             '/info': {
-                target: 'http://10.31.167.59:8090',
+                target: ENV.DEV.BACK_END_URL,
                 ws: true,
                 changeOrigin: true
             },
             '/user': {
-                target: 'http://10.31.167.59:8093',
+                target: ENV.DEV.BACK_END_URL,
                 ws: true,
                 changeOrigin: true
             },
-            '/store': {
+            '/user/userinfo': {
+                target: ENV.DEV.BACK_END_URL,
+                ws: true,
+                changeOrigin: true
+            },
+            '/user/editcommit': {
+                target: ENV.DEV.BACK_END_URL,
+                ws: true,
+                changeOrigin: true
+            },
+            '/myTree': {
+                target: ENV.DEV.BACK_END_URL,
+                ws: true,
+                changeOrigin: true
+            },
+            '/user/uploadImage': {
+                target: ENV.DEV.BACK_END_URL,
+                ws: true,
+                changeOrigin: true
+            },
+            '/myTreeList': {
                 target: ENV.DEV.BACK_END_URL,
                 ws: true,
                 changeOrigin: true
