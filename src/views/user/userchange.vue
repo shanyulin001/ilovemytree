@@ -114,7 +114,7 @@
             formData.append("dropzFile", e.file)
           }
         this.$http({
-          url: API.user_hdimg_change,
+          url: API.user_img,
           method: 'POST',
           data: formData
         }).then( res =>{

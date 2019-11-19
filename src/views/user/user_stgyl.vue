@@ -79,7 +79,7 @@
             }
         },
         created() {
-            // this.userNumber = sessionStorage.getItem('uID');
+            this.userNumber = sessionStorage.getItem('uID');
             const params = new URLSearchParams()
             params.append('userNumber',this.userNumber.toString())
             //获取头像用户名
@@ -97,7 +97,7 @@
             .catch( err => console.log( err ));
             //获取订单详情
             this.$http({
-                url: API.user_info,
+                url: API.myTreeList,
                 method: 'get',
                 data:{
                     uId:this.userNumber

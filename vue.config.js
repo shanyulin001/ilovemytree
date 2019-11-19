@@ -19,7 +19,27 @@ module.exports = {
     },
     devServer:{
         proxy:{
-            '/store': {
+            '/user/userinfo': {
+                target: ENV.DEV.BACK_END_URL,
+                ws: true,
+                changeOrigin: true
+            },
+            '/user/editcommit': {
+                target: ENV.DEV.BACK_END_URL,
+                ws: true,
+                changeOrigin: true
+            },
+            '/myTree': {
+                target: ENV.DEV.BACK_END_URL,
+                ws: true,
+                changeOrigin: true
+            },
+            '/user/uploadImage': {
+                target: ENV.DEV.BACK_END_URL,
+                ws: true,
+                changeOrigin: true
+            },
+            '/myTreeList': {
                 target: ENV.DEV.BACK_END_URL,
                 ws: true,
                 changeOrigin: true

@@ -33,7 +33,7 @@
             }
         },
         mounted() {
-            // this.userNumber = sessionStorage.getItem('uID');
+            this.userNumber = sessionStorage.getItem('uID');
             this.$http.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded'; 
             const params = new URLSearchParams()
             params.append('userNumber',this.userNumber)
