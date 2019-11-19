@@ -5,10 +5,29 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
+    see:true
   },
   mutations: {
+    change(state){
+      return state.see=false;
+    },
+    toxys(state){
+      return state.see=false;
+    },
+    tree(state){
+      return state.see=true;
+    },
+    eee(state){
+      return state.see=false;
+    },
+    wenst(state){
+      return state.see=false;
+    },
   },
-  actions: {
+  actions: { 
+    add(context,movie){
+      console.log(movie)
+    }
   },
   modules: {
   }
