@@ -7,6 +7,7 @@ import VueAxios from 'vue-axios'
 import Router from 'vue-router'
 import Vant from 'vant';
 import 'vant/lib/index.css';
+Vue.use(Vant);
 import './lib/mui/css/mui.min.css'
 const routerPush = Router.prototype.push
 Router.prototype.push = function push(location) {
@@ -33,7 +34,6 @@ VueAMap.initAMapApiLoader({
     v: '1.4.4'
 });
 
-Vue.use(Vant);
 Vue.config.productionTip = false
 new Vue({
     router,
