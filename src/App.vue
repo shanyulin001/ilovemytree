@@ -10,7 +10,7 @@
  <router-link class='change' to="/" > <van-tabbar-item icon="flag-o">生态林 </van-tabbar-item></router-link> 
   <router-link class='change'   to="/oldtree"><van-tabbar-item icon="brush-o"> 古木名树</van-tabbar-item></router-link> 
  <router-link class='change'  to="/feature" > <van-tabbar-item icon="diamond-o">特色认养</van-tabbar-item></router-link> 
- <router-link class='change' to='/userhome ' > <van-tabbar-item icon="manager-o"> </van-tabbar-item></router-link> 
+ <router-link class='change' to='/userhome ' > <van-tabbar-item icon="manager-o"> 我的 </van-tabbar-item></router-link> 
   
 </van-tabbar>
   </div>
