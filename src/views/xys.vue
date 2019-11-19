@@ -1,5 +1,9 @@
 <template>
 <div style='position: relative;height:2000px;'>
+        <div class="top" @click='signin'>
+            <span style="display: block;"><img src="" alt=""> <span>世界好大</span></span>
+             <span style="display: block;"><img src="" alt=""> <span>300</span></span> 
+        </div>
     <img src='../assets/111.jpg' style="width:100%;height:450px" />
     <van-popup v-model="fell" style=' overflow: unset;width:220px;height:260px;padding-left:10px;border-radius:5px;'>
         <p style='color:green;text-align:center;'>-许愿规则说明-</p>
@@ -84,11 +88,15 @@ export default {
        },
        mf(){
            this.$router.push({name:'make'})
+       },
+       signin(){
+           this.$router.push({name:'signin'})
        }
    },
 }
 </script>
 <style scoped>
+
 .xx{
     font-size:25px;
      color:white;
@@ -151,5 +159,15 @@ input::-webkit-input-placeholder{
 }
 .cc,.mf{
     text-align:center;
+}
+.top{
+    position: absolute;
+    top:1rem;
+    left: -1rem;
+    border: 1px solid white;
+    border-radius: 30px;
+    height: 3rem;
+    width:7rem;
+    text-align: center;
 }
 </style>

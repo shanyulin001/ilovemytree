@@ -9,11 +9,27 @@ import { Popup } from 'vant';
 import { Tabbar, TabbarItem } from 'vant';
 import { Button } from 'vant';
 import Router from 'vue-router'
+import './lib/mui/css/mui.min.css'
 const routerPush = Router.prototype.push
 Router.prototype.push = function push(location) {
 return routerPush.call(this, location).catch(error=> error)
 }
+import { NavBar } from 'vant';
 
+Vue.use(NavBar);
+import { RadioGroup, Radio } from 'vant';
+import {
+  GoodsAction,
+  GoodsActionIcon,
+  GoodsActionButton
+} from 'vant';
+
+Vue
+  .use(GoodsAction)
+  .use(GoodsActionIcon)
+  .use(GoodsActionButton);
+Vue.use(RadioGroup);
+Vue.use(Radio);
 
 Vue.use(Button);
 Vue.use(Tabbar).use(TabbarItem);

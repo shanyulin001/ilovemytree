@@ -6,16 +6,35 @@ import rj from '../views/rj'
 import   Gong from '../views/gong'
 import    Fu  from '../views/fu'
 import    Song from '../views/song'
-   
+//import detail from '../views/detail'  
 Vue.use(VueRouter)
 
 const routes = [
   //格式
+  
   {
     path: '/tree',
     name: 'tree',
     component: tree
   },
+  {
+    path:'/signin',
+    name:'signin',
+    component:()=>import('../views/signin')
+  },
+  {
+    path:'/zhuan',
+    name:'zhuan',
+    component:()=>import('../views/zhuan')
+  },
+  {
+    path: '/trees/:id',
+    name: 'detail',
+    component: () => import('../views/detail')
+
+
+  },
+
   {
     path:'/oldtree',
     name:"oldtree",
@@ -61,10 +80,14 @@ const routes = [
      component:  () => import('../views/eee')
 
   },
-  // { path:'',
-  // name:'',
-  //  component:  
-  // },
+  { path:'/tree/shop',
+    name:'verify',
+    component: () => import('../views/verify')
+  },
+  { path:'/tree/xuyuan',
+  name:'xuyaun',
+  component: () => import('../views/xuyuan')
+},
  
   {
     path:'/tree/xys/fx',
