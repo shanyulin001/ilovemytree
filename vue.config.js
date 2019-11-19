@@ -19,8 +19,9 @@ module.exports = {
     },
     devServer:{
         proxy:{
-            '/user/userinfo': {
+            '/store': {
                 target: ENV.DEV.BACK_END_URL,
+                ws: true,
                 changeOrigin: true
             }
         }

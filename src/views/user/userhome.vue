@@ -8,7 +8,7 @@
                 <div class="headPortrait_box">
                     <img :src="imgurl" alt="" style="height:80px;box-shadow: 50%">
                 </div>
-                <span>{{nickname}}</span>
+                <span id="nickname"></span>
                 <i class="fa fa-angle-right fa-2x" style="display:inline-block;margin-right:10px"></i>
             </router-link>
         </van-cell-group>
@@ -25,17 +25,15 @@
 
 <script>
     import API from 'api'
-    // import 'utils/cookie'
     export default {
         data() {
             return {
                 imgurl:'',
-                nickname:'小胖',
-                userNumber:''
+                userNumber:'15258469872'
             }
         },
         mounted() {
-            this.userNumber = sessionStorage.getItem('uID');
+            // this.userNumber = sessionStorage.getItem('uID');
             this.$http.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded'; 
             const params = new URLSearchParams()
             params.append('userNumber',this.userNumber)
@@ -45,10 +43,9 @@
                 data:params
             })
             .then( res => {
-                console.log( res.data )
                 if(res.data.message == 'success'){
                     this.imgurl = res.data.data.headPortrait
-                    this.nickname = res.data.data.uNickname
+                    document.querySelector('#nickname').innerHTML = res.data.data.uNickname
                 }
             })
             .catch( err => console.log( err ));

@@ -27,7 +27,7 @@
             >
             </el-amap-circle>
             <div class="guide_userinfo">
-                <van-cell title="松树" :label="tree_date" class="tree_title"/>
+                <van-cell :title="tree_name" :label="tree_date" class="tree_title"/>
                 <van-cell title="编号" :value="tree_index" />
                 <van-cell title="经度" :value="center[0]" />
                 <van-cell title="纬度" :value="center[1]" />
@@ -37,10 +37,12 @@
     </div>
 </template>
 <script>
+import API from 'api'
 export default {
     name:'home',
     data(){
         return{
+            tree_name:'',
             tree_index:999999999,
             tree_date:Date(),
             zoom:12,
@@ -61,7 +63,25 @@ export default {
                     pName:'Scale'
             }]
         }
-    }
+    },
+    created() {
+            this.tree_index=this.$route.query.oId
+            this.$http({
+                url: API.user_info,
+                method: 'get',
+                data:{
+                    uId:this.$route.query.oId
+                }
+            })
+            .then( res => {
+                if(res.data.message == '查询成功'){
+                    this.tree_index = res.data.data.treeId
+                    this.tree_name = res.data.data.treeName
+                    this.tree_date = res.data.data.claimTime
+                }
+            })
+            .catch( err => console.log( err ));
+    },
 }
 </script>
 <style scoped>

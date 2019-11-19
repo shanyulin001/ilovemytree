@@ -136,14 +136,18 @@
             data:params
         })
         .then( res => {
-            console.log( res.data )
             if(res.data.message == '修改成功'){
                 this.$dialog.alert({
-                  title: '修改信息',
+                  title: '修改个人信息',
                   message: '个人信息修改成功'
                 }).then(() => {
                   this.$router.push('/userinfo')
                 });
+            } else{
+              this.$dialog.alert({
+                  title: '修改个人信息',
+                  message: '修改失败'
+                })
             }
         })
         .catch( err => console.log( err ));
@@ -160,7 +164,6 @@
           data:params
       })
       .then( res => {
-          console.log( res.data )
           if(res.data.message == 'success'){
               this.fileList[0].url = res.data.data.headPortrait
               this.username = res.data.data.uId

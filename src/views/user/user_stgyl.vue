@@ -28,16 +28,33 @@
                         <van-col span='5'>导航</van-col>
                     </van-row>
                     <van-row class="treeList_top" v-for="(item,index) in trees" :key="index">
-                        <van-col span='5'>{{ item.name }}</van-col>
-                        <van-col span='7'>{{ item.key }}</van-col>
+                        <van-col span='5'>{{ item.treeName }}</van-col>
+                        <van-col span='7'>{{ item.oId }}</van-col>
+                        <van-col span='7'>{{ item.claimTime }}</van-col>
+                        <van-col span='5'>
+                            <van-button type="primary" round style="height: 28px;line-height:28px;" :to="{'name':'guide','query':{'oId':item.oId}}">导航</van-button>
+                        </van-col>
+                    </van-row>
+                </div>
+            </van-tab>
+            <van-tab title="认养记录">
+                <div class="treeList_box">
+                    <van-row class="treeList_top one">
+                        <van-col span='5'>树名</van-col>
+                        <van-col span='7'>编号</van-col>
                         <van-col span='7'>到期时间</van-col>
+                        <van-col span='5'>导航</van-col>
+                    </van-row>
+                    <van-row class="treeList_top" v-for="(item,index) in trees" :key="index">
+                        <van-col span='5'>{{ item.treeName }}</van-col>
+                        <van-col span='7'>{{ item.oId }}</van-col>
+                        <van-col span='7'>{{ item.claimTime }}</van-col>
                         <van-col span='5'>
                             <van-button type="primary" round style="height: 28px;line-height:28px;" to="guide">导航</van-button>
                         </van-col>
                     </van-row>
                 </div>
             </van-tab>
-            <van-tab title="认养记录">暂无</van-tab>
         </van-tabs>
     </div>
 </template>
@@ -48,22 +65,23 @@
         data() {
             return {
                 nickname:'',
-                userNumber:'',
+                userNumber:'15258469872',
                 imgurl:'',
                 trees:[{
-                    name:'常青藤',
-                    key:'0',
+                    treeId:111,
+                    oId:111,
+                    treeName:'111',
+                    claimTime:"1111"
                 },{
                     name:'常青藤1',
                     key:'1',
                 }]
             }
         },
-        mounted() {
-            this.userNumber = sessionStorage.getItem('uID');
-            this.$http.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded';
+        created() {
+            // this.userNumber = sessionStorage.getItem('uID');
             const params = new URLSearchParams()
-            params.append('userNumber',this.userNumber)
+            params.append('userNumber',this.userNumber.toString())
             //获取头像用户名
             this.$http({
                 url: API.user_info,
@@ -71,7 +89,6 @@
                 data:params
             })
             .then( res => {
-                console.log( res.data )
                 if(res.data.message == 'success'){
                     this.imgurl = res.data.data.headPortrait
                     this.nickname = res.data.data.uNickname
@@ -81,13 +98,12 @@
             //获取订单详情
             this.$http({
                 url: API.user_info,
-                method: 'git',
+                method: 'get',
                 data:{
                     uId:this.userNumber
                 }
             })
             .then( res => {
-                console.log( res.data )
                 if(res.data.message == '查询成功'){
                     this.trees = res.data.data.trees
                 }

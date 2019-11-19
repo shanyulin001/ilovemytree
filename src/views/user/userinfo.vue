@@ -53,7 +53,6 @@
                     data:params
                 })
                 .then( res => {
-                    console.log( res.data )
                     if(res.data.message == 'success'){
                         this.imgurl = res.data.data.headPortrait
                         this.username = res.data.data.uId
