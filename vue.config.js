@@ -17,12 +17,12 @@ module.exports = {
                 target: 'http://10.31.167.59:8093',
                 ws: true,
                 changeOrigin: true
-            },
-            '/store': {
-                target: ENV.DEV.BACK_END_URL,
-                ws: true,
-                changeOrigin: true
             }
+            // '/store': {
+            //     target: ENV.DEV.BACK_END_URL,
+            //     ws: true,
+            //     changeOrigin: true
+            // }
         }
     },
 
