@@ -5,12 +5,15 @@ const path = require('path')
 
 module.exports = {
     publicPath: './',
-
     devServer: {
         proxy: {
             '/info': {
                 target: 'http://10.31.167.59:8090',
-                // target: 'http://10.31.167.38:9082',
+                ws: true,
+                changeOrigin: true
+            },
+            '/user': {
+                target: 'http://10.31.167.59:8093',
                 ws: true,
                 changeOrigin: true
             },

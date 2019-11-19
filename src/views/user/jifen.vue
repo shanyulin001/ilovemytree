@@ -48,7 +48,7 @@ export default {
             }
         },
     mounted () {//渲染
-        axios.post('/info/user/userinfo123',{uId:111}).then((result) => {//积分
+        axios.get('/info/scoreDetail',{uId:500}).then((result) => {//积分
             this.jifennum=result.data.data.oTreeNum*5;//将积分数据存到jifennum中
             console.log(result.data.data.oTreeNum);
         });            

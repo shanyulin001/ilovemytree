@@ -58,7 +58,11 @@ export default {
             }
         },
     mounted () {//渲染
-        axios.post('/info/qryAcBalance/500',{uId:111}).then((result) => {//余额
+    //  axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded'; 
+    //         const params = new URLSearchParams()
+    //         params.append('userNumber',this.userNumber)
+
+        axios.post('/user/userinfo',{userNumber:'userNumber'}).then((result) => {//余额
             this.ser=result.data.data.balance;//将余额数据存到ser中
         });            
     }

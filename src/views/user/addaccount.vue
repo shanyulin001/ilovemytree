@@ -25,7 +25,7 @@
                     <div class="withbankcard">
                         <van-cell title="银行卡">
                             <van-dropdown-menu>
-                                <van-dropdown-item v-model="text" :options="option2" />
+                                <van-dropdown-item v-model="value2" :options="option2" />
                             </van-dropdown-menu>
                         </van-cell>
                         <van-field v-model="where" clearable label="开户支行"  placeholder="请输入开户支行"/>
@@ -52,7 +52,7 @@
                 <van-button  round plain v-on:click="tianjiacard" type="info" style="display:block;width:90%;margin:25px auto;">添加</van-button>
                 <van-dialog v-model="show1" title="确定账号信息" show-cancel-button>
                 <div v-if="value1==1">
-                    <p>
+                    <p style=" padding: 15px;color: grey;">
                     添加账户类型：支付宝<br>
                     账号：{{this.cardnumber}}<br>
                     姓名：{{this.username}}<br>
@@ -60,7 +60,7 @@
                     </p>
                 </div>
                 <div v-if="value1==0">
-                    <p>
+                    <p style=" padding: 15px;color: grey;">
                        添加账户类型：银行卡<br>
                  银行卡：{{this.value2}}<br>
                  开户支行：{{this.where}}<br>
@@ -74,6 +74,14 @@
         </div>
     </div>
 </template>
+<style>
+.affirmcon{
+    text-indent: 10px;
+    padding: 5px;
+    color: grey;
+}
+</style>
+
 <script>
 import axios from 'axios';
 export default {
@@ -81,7 +89,6 @@ export default {
     return {
         value1: 0,
         value2: 'a',
-        text:'中国农业银行',
         show: true,
         show1: false,
         option1: [
@@ -110,18 +117,17 @@ export default {
   },
   methods:{
       tianjiacard:function(){
-        this.show1=true;
-         axios.post('/info/insertInfo',{uId:111,infotype:this.value1,bankname:this.value2,
-         Openbranch:this.where,Bankaccount:this.cardnumber,cardholder:this.username,phoneNum:this.userphone,}).then(() => {//余额
-            console.log(this.yuenum);  
-            this.$dialog.alert({
-            title: '提现',
-            message: `账户提现${this.allrmb}元成功`
-                }).then(() => {
-                this.reload;
-                console.log(123);//确定
-                })
+            this.show1=true; 
+            console.log(this.value2);
+            console.log(123);//确定 
+            axios.post('/info/insertInfo',{uId:111,infotype:this.value1,bankname:this.value2,
+                Openbranch:this.where,Bankaccount:this.cardnumber,cardholder:this.username,phoneNum:this.userphone,}).then(() => {//余额
+                console.log(this.yuenum); 
             });
+            this.reload;
+      } 
+           
+           
 //         this.$Dialog.confirm({ 
 //             title: '确定账号信息',      
 //         }).then(() => {
@@ -129,7 +135,6 @@ export default {
 //             }).catch(() => {
 //             console.log(321)//取消
 // });
-          }
        //    if(this.value==0){ 
         //          this.submitcon=`添加账户类型：银行卡<br>
         //          银行卡：${this.value2}<br>

@@ -75,7 +75,7 @@ export default {
         }
     },
      mounted () {//渲染
-        axios.get('/info/queryInfo',{uId:111}).then((result) => {//银行卡支付宝信息
+        axios.get('/info/queryInfo',{uid:500}).then((result) => {//银行卡支付宝信息
             this.bankcon=result.data.data;
             this.yhkflag=true;
         });            
