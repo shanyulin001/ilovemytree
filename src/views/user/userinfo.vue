@@ -44,6 +44,7 @@
             }
         },
         mounted() {
+            this.$store.commit('change')
             this.userNumber = sessionStorage.getItem('uID');
             const params = new URLSearchParams()
             params.append('userNumber',this.userNumber)

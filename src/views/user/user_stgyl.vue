@@ -50,7 +50,7 @@
                         <van-col span='7'>{{ item.oId }}</van-col>
                         <van-col span='7'>{{ item.claimTime }}</van-col>
                         <van-col span='5'>
-                            <van-button type="primary" round style="height: 28px;line-height:28px;" to="guide">导航</van-button>
+                            <van-button type="primary" round style="height: 28px;line-height:28px;" to="guide"  @click="fff">导航</van-button>
                         </van-col>
                     </van-row>
                 </div>
@@ -79,6 +79,7 @@
             }
         },
         created() {
+            this.$store.commit('change')
             this.userNumber = sessionStorage.getItem('uID');
             const params = new URLSearchParams()
             params.append('userNumber',this.userNumber.toString())
@@ -109,7 +110,7 @@
                 }
             })
             .catch( err => console.log( err ));
-        },
+        }
     }
 </script>
 

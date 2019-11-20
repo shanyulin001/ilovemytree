@@ -81,7 +81,7 @@ export default {
                 }
             })
             .catch( err => console.log( err ));
-    },
+    }
 }
 </script>
 <style scoped>
@@ -91,7 +91,7 @@ export default {
     }
     .amap-wrapper{
         width: 100vw;
-        height: 100vh;
+        height: 95vh;
     }
     .guide_userinfo{
         width: 80vw;
