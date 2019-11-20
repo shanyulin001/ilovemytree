@@ -20,9 +20,20 @@ export default new Vuex.Store({
     eee(state){
       return state.see=false;
     }
+    // phone:''
+  },
+  mutations: {
+    // storephone(state,phone){
+    //   return  state.phone=phone
+    // }
+    aaa:(state)=>{
+      return state.see=false
+    }
   },
   actions: { 
-    
+     eee({commit}){
+        commit('aaa')
+     }
   },
   modules: {
   }

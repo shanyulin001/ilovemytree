@@ -56,6 +56,10 @@
                 this.$router.push('login')
             }
         },
+        destroyed() {
+                this.$store.commit('change')
+            
+        },
     }
 </script>
 

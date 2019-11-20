@@ -15,7 +15,6 @@ import VueAMap from 'vue-amap';
 
 import { Swipe, SwipeItem } from 'vant';
 import { Popup } from 'vant';
-import { Icon } from 'vant';
 import { Tabbar, TabbarItem } from 'vant';
 import { Button } from 'vant';
 import { DropdownMenu, DropdownItem } from 'vant';
@@ -30,7 +29,6 @@ import { RadioGroup, Radio } from 'vant';
 import { Uploader } from 'vant';
 import { Dialog } from 'vant';
 import { List } from 'vant';
-import { NavBar } from 'vant';
 import { Area } from 'vant';
 import {
     GoodsAction,
@@ -40,7 +38,6 @@ import {
 import { Card } from 'vant';
 Vue.use(Swipe).use(SwipeItem);
 Vue.use(Popup);
-Vue.use(Icon);
 Vue.use(Tabbar).use(TabbarItem);
 Vue.use(Button);
 Vue.use(DropdownMenu).use(DropdownItem);
@@ -56,7 +53,6 @@ Vue.use(Radio);
 Vue.use(Uploader);
 Vue.use(Dialog);
 Vue.use(List);
-Vue.use(NavBar);
 Vue.use(Area);
 Vue
     .use(GoodsAction)
@@ -65,6 +61,14 @@ Vue
 Vue.use(Card);
 
 
+import Mint from 'mint-ui' 
+import 'mint-ui/lib/style.css'
+import {Icon,NavBar}from 'vant';
+import './lib/mui/css/mui.min.css'
+
+Vue.use(Icon);
+Vue.use(NavBar)
+Vue.config.productionTip = false
 
 const routerPush = Router.prototype.push
 Router.prototype.push = function push(location) {
@@ -95,5 +99,6 @@ Vue.config.productionTip = false
 new Vue({
     router,
     store,
+    Mint,
     render: h => h(App)
 }).$mount('#app')
