@@ -1,9 +1,12 @@
 <template>
   <div>
     <van-nav-bar title="用户协议" left-text right-text left-arrow @click-left="onClickLeft" />
-    <p>我爱我树用户注册协议</p>
-    <span>
-      一、总则
+      <div class='text'>
+
+      
+      <p>我爱我树用户注册协议</p>
+      <h4>一、总则</h4>
+      
       <br>
       1.1 保宝网的所有权和运营权归我爱我树科技有限公司所有。
        <br>
@@ -65,7 +68,8 @@
      <br> 8.1 本协议的订立、执行和解释及争议的解决均应适用中华人民共和国法律。
     <br>  8.2 如本协议中的任何条款无论因何种原因完全或部分无效或不具有执行力，本协议的其余条款仍应有效并且有约束力。
     <br>  8.3 本协议解释权及修订权归深圳永兴元科技有限公司所有。
-    </span>
+   
+    </div>
   </div>
 </template>
 <script>
@@ -80,11 +84,13 @@ export default {
 <style scoped>
 p {
   text-align: center;
-  margin-top: 30px;
+  margin-top: 20px;
   font-size: 18px;
   color: rgb(73, 72, 72);
+  
 }
-div{
-    padding:5px
+
+.text{
+  padding:10px
 }
 </style>

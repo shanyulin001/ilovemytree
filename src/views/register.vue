@@ -32,23 +32,20 @@
       </div>
     </form>
     <div class='check'>
-        <div style="height:31px">
-
-        </div>
       <!-- <input class="radio_type" type="radio" name="type" id="radio1" checked/>  -->
-      <!-- <input class="radio_type" type="radio" name="type" id="radio2" @click='radio' />  -->
-      <!-- <p class="argee"> 
+      <input class="radio_type" type="radio" name="type" id="radio2" @click='radio' /> 
+      <p class="argee"> 
          确定即代表您同意
         <span @click='agreement'>《用户注册协议》</span>
-      </p> -->
+      </p>
     </div>
-    <button type="button" class="button" @click='zhuce'>登录</button>
+    <button type="button" class="button" @click='zhuce'>注册</button>
     <img src="../assets/disanfang.png" alt="">
   </div>
 </template>
 <script>
 import { Toast } from "mint-ui";
-// import axios from 'axios';
+import axios from 'axios';
 export default {
   name: "login",
   data(){
@@ -77,32 +74,41 @@ export default {
         if(!(/^1[3456789]\d{9}$/.test(this.phone))){ 
        Toast("手机号码有误，请重填！");
        
-         }else if(this.password==''){
-           Toast("密码不能为空");
+         }else if(this.check==false){
+         Toast("用户注册协议");
+       }else if(this.password==''){
+         Toast("密码不能为空");
        } else{
-         var ajax = new XMLHttpRequest()
-            ajax.open('post','/user/login',true)
-            ajax.setRequestHeader('content-type','application/x-www-form-urlencoded');
-            ajax.send('userNumber='+this.phone+'&pwd='+this.password)
-            ajax.onreadystatechange=function(){
-              if(ajax.readyState==4){
-                console.log(ajax.responseText.data.uId)
-                // sessionStorage.setItem("uID", ajax.responseText.data.uId);
-                alert('登录成功')
-              }
-            }
-          //  axios.post('/user/login',{
-          //    userNumber:this.phone,
-          //    pwd:this.password
-          //  }) .then(function(response){
-          //    if(response.message=='登录成功'){
-          //      sessionStorage.setItem("uID", response.data.uID);
-          //     //  this.$store.commit('storephone',this.phone)
-          //       alert('登录成功')
-          //    }
-          //  })
-          
-         }
+            // var ajax = new XMLHttpRequest()
+            // ajax.open('post','http://10.31.167.59:8093/user/registe',true)
+            // ajax.setRequestHeader('content-type','application/x-www-form-urlencoded');
+            // ajax.send('userNumber='+this.phone+'&pwd='+this.password)
+            // ajax.onreadystatechange=function(){
+            //   if(ajax.readyState==4){
+            //     console.log(ajax.responseText)
+            //   }
+            // }
+        //         if(ajax.readyState==4){
+          // axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded';
+          // const params = new URLSearchParams()
+          //   params.append('userNumber',this.phone)
+          //    params.append('pwd',this.password)
+              axios.post('/user/registe',{
+             userNumber:this.phone,
+             pwd:this.password
+            // params
+           }) .then(function(response){
+             console.log(response)
+             if(response.message=='注册成功'){
+                alert('注册成功')
+                 this.$router.push('login')
+             }
+           })
+        
+            
+           
+        //  }
+       }
       },
       agreement(){
         this.$router.push('registration-agreement')

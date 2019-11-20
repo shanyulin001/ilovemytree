@@ -15,6 +15,6 @@ new Vue({
   router,
   store,
   Mint,
-
+  
   render: h => h(App)
 }).$mount('#app')
