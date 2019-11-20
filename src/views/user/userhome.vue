@@ -34,7 +34,7 @@
         },
         mounted() {
             this.$store.commit('tree')
-            // sessionStorage.setItem('uID', '13131232');
+            sessionStorage.setItem('uID', '13117879960');
             this.userNumber = sessionStorage.getItem('uID');
             if(this.userNumber){
             this.$http.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded'; 

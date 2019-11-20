@@ -66,6 +66,7 @@
 </template>
 
 <script>
+import API from 'api'
 import axios from 'axios';
 export default {
     data() {
@@ -74,8 +75,15 @@ export default {
             bankcon:''
         }
     },
-     mounted () {//渲染
-        axios.get('/info/queryInfo',{uid:500}).then((result) => {//银行卡支付宝信息
+    mounted () {//渲染
+        // axios.get('/info/queryInfo',{uid:500})
+        axios({
+            url: API.yhk,
+            method: 'get',
+            params:{
+                'uid':'500'
+                }
+            }).then((result) => {//银行卡支付宝信息
             this.bankcon=result.data.data;
             this.yhkflag=true;
         });            

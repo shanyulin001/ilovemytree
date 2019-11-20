@@ -1,6 +1,6 @@
 const ENV = {
     DEV:{
-        BACK_END_URL: 'http://10.31.155.16:3000'
+        BACK_END_URL: 'http://10.31.167.54:8090'
     }
 }
 

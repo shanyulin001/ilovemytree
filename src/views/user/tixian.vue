@@ -14,7 +14,7 @@
     <div style="text-align:left">
         <van-cell title="支付宝" is-link :value="numphone" />
         <van-cell title="提现金额(￥)">
-                <input type="text" placeholder="请输入提现金额" v-on:blur="shiqufocus" v-model="allrmb" value="allrmb" class="inputyue">
+                <input type="text" placeholder="请输入提现金额" style="border:0;width: 120px;font-size:12px;" v-on:blur="shiqufocus" v-model="allrmb" value="allrmb" class="inputyue">
         </van-cell>
         <van-cell :title="'可提现金额：'+yuenum+'元'" :label="'提现手续费：'+yuenum*0.002+'元'">
             <div>
@@ -60,6 +60,7 @@
     }
 </style>
 <script>
+import API from 'api'
 import axios from 'axios';
 export default {
     inject:['reload'],
@@ -71,7 +72,16 @@ export default {
         }
     },
     mounted () {//渲染
-        axios.post('/user/userinfo',{userNumber:15258469872}).then((result) => {//余额
+        this.$http.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded'; 
+        const params = new URLSearchParams()
+        params.append('userNumber',15258469872)
+        axios({
+            url: API.user_info,
+            method: 'post',
+            params
+        })
+        // axios.get('http://192.168.63.128/user/userinfo',{userNumber:13738739598})
+        .then((result) => {//余额
             this.yuenum=result.data.data.balance;//将数据存到yuenum中
             this.numphone=result.data.data.userNumber;
             console.log(this.yuenum);
@@ -89,7 +99,14 @@ export default {
             console.log(this.allrmb);
         },
         alltixian2:function(){
-            axios.get('/info/getAmt',{bankaccount:15258469872,balance:this.allrmb}).then(() => {//余额
+            // axios.get('/info/getAmt',{bankaccount:15258469872,balance:this.allrmb})
+            axios({
+                url: API.getAmt,
+                method: 'get',
+                params:{bankaccount:15245632564,balance:this.allrmb}
+            })
+            .then((rasult) => {//余额
+            console.log(rasult.data);
             console.log(this.yuenum);  
             this.$dialog.alert({
             title: '提现',

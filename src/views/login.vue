@@ -88,6 +88,7 @@ export default {
               if(ajax.readyState==4){
                 console.log(ajax.responseText.data.uId)
                 // sessionStorage.setItem("uID", ajax.responseText.data.uId);
+                sessionStorage.setItem('uID',ajax.responseText.data.uId)
                 alert('登录成功')
               }
             }

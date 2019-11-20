@@ -125,6 +125,7 @@
         this.$http.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded'; 
         const params = new URLSearchParams()
         params.append('uId',this.username)
+        params.append('headPortrait',this.fileList[0].url.toString())
         params.append('uNickname',this.nickname)
         params.append('userNumber',this.phone)
         params.append('sex',Number(this.radio))
@@ -164,15 +165,14 @@
           data:params
       })
       .then( res => {
-          if(res.data.message == 'success'){
-              this.fileList[0].url = res.data.data.headPortrait
-              this.username = res.data.data.uId
-              this.nickname = res.data.data.uNickname
-              this.phone = res.data.data.userNumber
-              this.identity = res.data.data.idCard
-              this.radio = res.data.data.sex.toString()
-              this.birthday = res.data.data.birthday
-          }
+            console.log(this.fileList[0].url.toString())
+            // this.fileList[0].url = res.data.data.headPortrait
+            this.username = res.data.data.uId
+            this.nickname = res.data.data.uNickname
+            this.phone = res.data.data.userNumber
+            this.identity = res.data.data.idCard
+            this.radio = res.data.data.sex.toString()
+            this.birthday = res.data.data.birthday
       })
       .catch( err => console.log( err ));
       //如果传过来是完整时间对象，用下方法格式化

@@ -40,6 +40,7 @@
     }
 </style>
 <script>
+import API from 'api';
 import axios from 'axios';
 export default {
     data() {
@@ -48,9 +49,15 @@ export default {
             }
         },
     mounted () {//渲染
-        this.$store.commit('change')
-        axios.get('/info/scoreDetail',{uId:500}).then((result) => {//积分
-            this.jifennum=result.data.data.oTreeNum*5;//将积分数据存到jifennum中
+        // axios.get(API.jifen,{uId:500})
+        axios({
+            url: API.jifen,
+            method: 'get',
+            params:{
+                'uid':'500'
+                }
+        }).then((result) => {//积分
+            this.jifennum=(result.data.data.oTreenum)*5;//将积分数据存到jifennum中
             console.log(result.data.data.oTreeNum);
         });            
     }

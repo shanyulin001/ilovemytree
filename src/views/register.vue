@@ -44,6 +44,7 @@
   </div>
 </template>
 <script>
+import API from 'api'
 import { Toast } from "mint-ui";
 import axios from 'axios';
 export default {
@@ -89,15 +90,19 @@ export default {
             //   }
             // }
         //         if(ajax.readyState==4){
-          // axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded';
-          // const params = new URLSearchParams()
-          //   params.append('userNumber',this.phone)
-          //    params.append('pwd',this.password)
-              axios.post('/user/registe',{
-             userNumber:this.phone,
-             pwd:this.password
-            // params
-           }) .then(function(response){
+          axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded';
+          const params = new URLSearchParams()
+            params.append('userNumber',this.phone)
+             params.append('pwd',this.password)
+              axios({
+                      url: API.register,
+                      method: 'post',
+                      data:params
+              })
+          //     axios.post('http://10.31.167.54:8093/user/registe',{params
+          //   // params
+          //  }) 
+           .then(function(response){
              console.log(response)
              if(response.message=='注册成功'){
                 alert('注册成功')

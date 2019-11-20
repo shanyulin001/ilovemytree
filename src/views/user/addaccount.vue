@@ -49,24 +49,24 @@
                 </div>             
             </van-cell-group> 
             <div class="jifenbutton">
-                <van-button  round plain v-on:click="tianjiacard" type="info" style="display:block;width:90%;margin:25px auto;">添加</van-button>
+                <van-button  round plain @click="tianjiacard" type="info" style="display:block;width:90%;margin:25px auto;">添加</van-button>
                 <van-dialog v-model="show1" title="添加账户成功">
                 <div v-if="value1==1">
                     <p style=" padding: 15px;color: grey;">
                     添加账户类型：支付宝<br>
-                    账号：{{this.cardnumber}}<br>
-                    姓名：{{this.username}}<br>
-                    手机号:{{this.userphone}}<br>
+                    账号：{{cardnumber}}<br>
+                    姓名：{{username}}<br>
+                    手机号:{{userphone}}<br>
                     </p>
                 </div>
                 <div v-if="value1==0">
                     <p style=" padding: 15px;color: grey;">
                        添加账户类型：银行卡<br>
-                 银行卡：{{this.value2}}<br>
-                 开户支行：{{this.where}}<br>
-                 银行卡号：{{this.cardnumber}}<br>
-                 持卡人姓名：{{this.username}}<br>
-                 银行预留手机号:{{this.userphone}}<br> 
+                 银行卡：{{whichbank}}<br>
+                 开户支行：{{where}}<br>
+                 银行卡号：{{cardnumber}}<br>
+                 持卡人姓名：{{username}}<br>
+                 银行预留手机号:{{userphone}}<br> 
                     </p>
                 </div>
                 </van-dialog>
@@ -83,6 +83,7 @@
 </style>
 
 <script>
+import API from 'api'
 import axios from 'axios';
 export default {
     inject:['reload'],
@@ -113,17 +114,50 @@ export default {
         alipaynumber:'',
         alipayusername:'',
         alipayuserphone:'',
-        submitcon:''
+        submitcon:'',
+        whichbank:''
     }
   },
   methods:{
       tianjiacard:function(){
+            switch(this.value2){
+                case 'a':
+                    this.whichbank='中国农业银行';break;
+                case 'b':
+                    this.whichbank='中国工商银行';break;
+                case 'c':
+                    this.whichbank='中国银行';break;
+                case 'd':
+                    this.whichbank='中国建设银行';break;
+                case 'e':
+                    this.whichbank='中国交通银行';break;
+                case 'f':
+                    this.whichbank='中国邮政储蓄银行';break;
+                case 'g':
+                    this.whichbank='其他银行';break;
+            }
+
             this.show1=true; 
-            console.log(this.value2);
-            console.log(123);//确定 
-            axios.post('/info/insertInfo',{uId:500,infotype:this.value1,bankname:this.value2,
-                Openbranch:this.where,Bankaccount:this.cardnumber,cardholder:this.username,phoneNum:this.userphone,}).then(() => {//余额
-                console.log(this.yuenum); 
+            console.log(this.value2); 
+            // axios.post('/info/insertInfo',{uId:500,infotype:this.value1,bankname:this.whichbank,
+            //     Openbranch:this.where,Bankaccount:this.cardnumber,cardholder:this.username,phoneNum:this.userphone,})
+
+            this.$http.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded'; 
+            const params = new URLSearchParams()
+            params.append('uId',500)
+            params.append('infotype',this.value1)
+            params.append('bankname',this.whichbank)
+            params.append('Openbranch',this.where)
+            params.append('Bankaccount',this.cardnumber)
+            params.append('cardholder',this.username)
+            params.append('phoneNum',this.userphone)
+            axios({
+            url: API.bdyhk,
+            method: 'post',
+            params
+            })
+            .then(() => {//余额
+            console.log(this.yuenum); 
             });
             this.reload;
       } 

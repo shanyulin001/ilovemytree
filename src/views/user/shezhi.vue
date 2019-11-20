@@ -26,11 +26,3 @@
     background: #555;
 }
 </style>
-
-<script>
-export default {
-    mounted() {
-        this.$store.commit('change')
-    },
-}
-</script>
