@@ -7,8 +7,7 @@ import   Gong from '../views/gong'
 import    Fu  from '../views/fu'
 import    Song from '../views/song'
 
-
-import userhome from 'views/user/userhome'
+import userhome from '../views/user/userhome'
 import userinfo from 'views/user/userinfo'
 import userchange from 'views/user/userchange'
 import user_stgyl from 'views/user/user_stgyl'

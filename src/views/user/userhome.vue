@@ -33,7 +33,9 @@
             }
         },
         mounted() {
+            // sessionStorage.setItem('uID', '13131232');
             this.userNumber = sessionStorage.getItem('uID');
+            if(this.userNumber){
             this.$http.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded'; 
             const params = new URLSearchParams()
             params.append('userNumber',this.userNumber)
@@ -49,6 +51,9 @@
                 }
             })
             .catch( err => console.log( err ));
+            }else{
+                this.$router.push('login')
+            }
         },
     }
 </script>
