@@ -34,6 +34,9 @@
         },
         mounted() {
             this.userNumber = sessionStorage.getItem('uID');
+            if(!this.userNumber){
+                this.$router.push('login')
+            }
             this.$http.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded'; 
             const params = new URLSearchParams()
             params.append('userNumber',this.userNumber)

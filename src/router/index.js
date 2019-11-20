@@ -41,7 +41,37 @@ const routes = [
         path: '/userhome',
         name: 'userhome',
         component: userhome
-    }, {
+    },
+    {
+        path: '/about', //注册
+        name: 'about',
+        component: () =>
+            import ('../views/register')
+    },
+    {
+        path: '/registration-agreement',
+        name: 'registration-agreement',
+        component: () =>
+            import ('../views/registration-agreement')
+    },
+    {
+        path: '/login', //登录
+        name: 'login',
+        component: () =>
+            import ('../views/login')
+    },
+    {
+        path: '/claim-agreement',
+        name: 'claim-agreement',
+        component: () =>
+            import ('../views/claim-agreement')
+    },
+    {
+        path: '/tree-agreement',
+        component: () =>
+            import ('../views/tree-agreement')
+    },
+    {
         path: '/userinfo',
         name: 'userinfo',
         component: userinfo
