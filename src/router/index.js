@@ -6,11 +6,17 @@ import rj from '../views/rj'
 import   Gong from '../views/gong'
 import    Fu  from '../views/fu'
 import    Song from '../views/song'
-   
+
+
+import userhome from 'views/user/userhome'
+import userinfo from 'views/user/userinfo'
+import userchange from 'views/user/userchange'
+import user_stgyl from 'views/user/user_stgyl'
+import guide from 'views/user/guide'
+
 Vue.use(VueRouter)
 
 const routes = [
-  //格式
   {
     path: '/tree',
     name: 'tree',
@@ -48,7 +54,7 @@ const routes = [
   },
   {
     path:'/',
-     redirect:'/tree'
+    redirect:'/tree'
   },
   {
     path:'/tree/xys/make',
@@ -58,42 +64,46 @@ const routes = [
   {
     path:'/tree/xys/eee',
     name:'eee',
-     component:  () => import('../views/eee')
-
-  },
-  // { path:'',
-  // name:'',
-  //  component:  
-  // },
- 
-  {
+    component:  () => import('../views/eee')
+  },{
     path:'/tree/xys/fx',
-    
     component: () => import('../views/aspiration'),
     children:[
-     { path:'/',
+    { path:'/',
       name:'gong',
       component:Gong
-     },{
-       path:'fu',
-       name:'fu',
-       component:Fu
-     },
-     {
-       path:'song',
-       name:'song',
-       component:Song
-     }
+    },{
+      path:'fu',
+      name:'fu',
+      component:Fu
+    },
+    {
+      path:'song',
+      name:'song',
+      component:Song
+    }
     ]
-   },
-   
-  
-
-  // {
-  //   path:'/tree/:id',
-  //   name:'parti',
-  //   component:()=>import('../views/parti')
-  // }
+  },{
+    path: '/userhome',
+    name: 'userhome',
+    component: userhome
+  },{
+    path: '/userinfo',
+    name: 'userinfo',
+    component: userinfo
+  },{
+    path: '/userchange',
+    name: 'userchange',
+    component: userchange
+  },{
+    path: '/user_stgyl',
+    name: 'user_stgyl',
+    component: user_stgyl
+  },{
+    path: '/guide',
+    name: 'guide',
+    component: guide
+  }
 ]
 
 const router = new VueRouter({
