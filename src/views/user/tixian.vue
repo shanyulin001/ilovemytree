@@ -14,7 +14,7 @@
     <div style="text-align:left">
         <van-cell title="支付宝" is-link :value="numphone" />
         <van-cell title="提现金额(￥)">
-                <input type="text" placeholder="请输入提现金额" v-on:blur="shiqufocus" v-model="allrmb" value="allrmb" class="inputyue">
+                <input type="text" placeholder="请输入提现金额" style="border:0;width: 120px;font-size:12px;" v-on:blur="shiqufocus" v-model="allrmb" value="allrmb" class="inputyue">
         </van-cell>
         <van-cell :title="'可提现金额：'+yuenum+'元'" :label="'提现手续费：'+yuenum*0.002+'元'">
             <div>

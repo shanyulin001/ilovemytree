@@ -1,6 +1,8 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 
+
+
 import userhome from '../views/user/userhome'
 import userinfo from 'views/user/userinfo'
 import userchange from 'views/user/userchange'
@@ -22,15 +24,13 @@ import addaccount from '../views/user/addaccount' //添加银行卡
 import tree from '../views/tree'
 import oldtree from '../views/oldtree'
 import rj from '../views/rj'
-import   Gong from '../views/gong'
-import    Fu  from '../views/fu'
-import    Song from '../views/song'
+import Gong from '../views/gong'
+import Fu from '../views/fu'
+import Song from '../views/song'
 Vue.use(VueRouter)
 
 const routes = [
-<<<<<<< HEAD
-    { //设置页面
-=======
+    //设置页面
     //格式
     // {
     // path: '/',
@@ -54,7 +54,6 @@ const routes = [
         name: 'user_stgyl',
         component: user_stgyl
     }, { //设置页面
->>>>>>> 76f50c6342f3be9e5dc0fcb6cd46056b9add2286
         path: '/shezhi',
         name: 'shezhi',
         component: shezhi
@@ -117,96 +116,111 @@ const routes = [
         path: '/addaccount',
         name: 'addaccount',
         component: addaccount
-    },{
-    path: '/tree',
-    name: 'tree',
-    component: tree
-  },
-  {
-    path:'/signin',
-    name:'signin',
-    component:()=>import('../views/signin')
-  },
-  {
-    path:'/zhuan',
-    name:'zhuan',
-    component:()=>import('../views/zhuan')
-  },
-  {
-    path: '/trees/:id',
-    name: 'detail',
-    component: () => import('../views/detail')
-  },
-  {
-    path:'/oldtree',
-    name:"oldtree",
-    component:oldtree
-  },
-  {
-    path:'/tree/renyang',
-    name:'renyang',
-    component: () => import('../views/renyang')
-  },
-  {
-    path:'/feature',
-    name:'feature',
-    component: () => import('../views/feature')
-  },
-  {
-    path:'/culture',
-    name:'culture',
-    component: () => import('../views/culture')
-  },
-  {
-    path:'/tree/xys',
-    name:'xys',
-    component: () => import('../views/xys')
-  },
-  {
-    path:'/tree/xys/rj',
-    name:'rj',
-    component: rj
-  },
-  {
-    path:'/',
-    redirect:'/tree'
-  },
-  {
-    path:'/tree/xys/make',
-    name:'make',
-    component: () => import('../views/make')
-  },
-  {
-    path:'/tree/xys/eee',
-    name:'eee',
-    component:  () => import('../views/eee')
-
-  },
-  { path:'/tree/shop',
-    name:'verify',
-    component: () => import('../views/verify')
-  },
-  { path:'/tree/xuyuan',
-  name:'xuyaun',
-  component: () => import('../views/xuyuan')
-},{
-    path:'/tree/xys/fx',
-    component: () => import('../views/aspiration'),
-    children:[
-    { path:'/',
-      name:'gong',
-      component:Gong
-    },{
-      path:'fu',
-      name:'fu',
-      component:Fu
+    }, {
+        path: '/tree',
+        name: 'tree',
+        component: tree
     },
     {
-      path:'song',
-      name:'song',
-      component:Song
-    }]
-  }
+        path: '/signin',
+        name: 'signin',
+        component: () =>
+            import ('../views/signin')
+    },
+    {
+        path: '/zhuan',
+        name: 'zhuan',
+        component: () =>
+            import ('../views/zhuan')
+    },
+    {
+        path: '/trees/:id',
+        name: 'detail',
+        component: () =>
+            import ('../views/detail')
+    },
+    {
+        path: '/oldtree',
+        name: "oldtree",
+        component: oldtree
+    },
+    {
+        path: '/tree/renyang',
+        name: 'renyang',
+        component: () =>
+            import ('../views/renyang')
+    },
+    {
+        path: '/feature',
+        name: 'feature',
+        component: () =>
+            import ('../views/feature')
+    },
+    {
+        path: '/culture',
+        name: 'culture',
+        component: () =>
+            import ('../views/culture')
+    },
+    {
+        path: '/tree/xys',
+        name: 'xys',
+        component: () =>
+            import ('../views/xys')
+    },
+    {
+        path: '/tree/xys/rj',
+        name: 'rj',
+        component: rj
+    },
+    {
+        path: '/',
+        redirect: '/tree'
+    },
+    {
+        path: '/tree/xys/make',
+        name: 'make',
+        component: () =>
+            import ('../views/make')
+    },
+    {
+        path: '/tree/xys/eee',
+        name: 'eee',
+        component: () =>
+            import ('../views/eee')
+
+    },
+    {
+        path: '/tree/shop',
+        name: 'verify',
+        component: () =>
+            import ('../views/verify')
+    },
+    {
+        path: '/tree/xuyuan',
+        name: 'xuyaun',
+        component: () =>
+            import ('../views/xuyuan')
+    }, {
+        path: '/tree/xys/fx',
+        component: () =>
+            import ('../views/aspiration'),
+        children: [{
+                path: '/',
+                name: 'gong',
+                component: Gong
+            }, {
+                path: 'fu',
+                name: 'fu',
+                component: Fu
+            },
+            {
+                path: 'song',
+                name: 'song',
+                component: Song
+            }
+        ]
+    }
 ]
 
 
