@@ -10,7 +10,7 @@ const BACK_END_URL = 'http://121.199.79.111'
 //  8094  接口 21、22、23、24、25
 //  8095  接口  2、11、12、17
 const API = {
-    user_info: `${BACK_END_URL}:8093/user/userinfo`,
+    // user_info: `${BACK_END_URL}:8093/user/userinfo`,
     user_info_change: `${BACK_END_URL}:8093/user/editcommit`,
     myTree:`${BACK_END_URL}:8093/myTree`,
     user_img:`${BACK_END_URL}:8093/user/uploadImage`,
@@ -19,7 +19,8 @@ const API = {
     jifen:`${BACK_END_URL}:8090/info/scoreDetail`,
     yhk:`${BACK_END_URL}:8090/info/queryInfo`,
     bdyhk:`${BACK_END_URL}:8090/info/insertInfo`,
-    getAmt:`${BACK_END_URL}:8090/info/getAmt`
+    getAmt:`${BACK_END_URL}:8090/info/getAmt`,
+    login:`${BACK_END_URL}:8093/user/login`
 }
 
 export default API

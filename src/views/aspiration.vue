@@ -15,6 +15,7 @@
         class="yuan-wen"
         maxlength="90"
         placeholder="写下我的心愿，90字以内"
+      v-model="msg"
       ></textarea>
     </div>
 
@@ -26,7 +27,7 @@
   
       <ul>
          <li v-for="select of selects" :key="select.id">
-           <input type="radio" @click="selecter(select)" name='1'  :class="{biu:variates===select}"/>
+           <input type="radio" @click="selecter(select)" name='1'  :class="{biu:variates===select}"  />
           <span>{{select.routerlik}}</span>
          </li>
       </ul>
@@ -34,7 +35,7 @@
     </div>
     <!-- 可以切换的路由 -->
      <div class="yuan-an">
-      <button>完成</button>
+      <button @click="go">完成</button>
     </div>
   </div>
 </template>
@@ -49,7 +50,8 @@ export default {
     return {
       variates:selects[0],
       // 上面的数组
-      selects:selects
+      selects:selects,
+      msg:''
    
     }
   },
@@ -64,8 +66,17 @@ export default {
      },
      ru(){
        this.$router.push({name:'tree'})
-     }
-  }
+     },
+     go(){
+       this.$router.push({name:'yuan'})
+       this.$store.commit('model',this.msg)
+     },
+     
+
+  },
+  mounted() {
+   
+  },
 }
 </script>
 

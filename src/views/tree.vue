@@ -39,7 +39,7 @@
                  <span>{{item.treePrice}}元/颗</span>  
             </div>
         </div>
-        <div class='choose'>
+        <div class='choose' >
             我要认养
         </div>
     </li>
@@ -154,7 +154,7 @@ mounted() {
      axios.get('/tree/all').then((result)=>{
       // console.log(result)
        this.tree=result.data.data
-       console.log(this.tree.data)
+       console.log(this.tree)
        
    })
  

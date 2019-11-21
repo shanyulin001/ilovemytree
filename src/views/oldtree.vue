@@ -1,5 +1,5 @@
 <template>
-<div>
+<div >
 <van-swipe :autoplay="3000" indicator-color="white">
   <van-swipe-item><img src='../assets/logo.png'></van-swipe-item>
   <van-swipe-item><img src='../assets/logo.png'></van-swipe-item>
@@ -16,13 +16,13 @@
 <span  style="font-size:12px;color:#ececec;">综合排序<van-icon name="arrow-down" /></span>
 </div>
 <ul>
-    <li>
+    <li v-for="item of arr" :key="item.id" >
         <div class='introduce'>
-            <img src='https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1573465955543&di=b10a780d769c4a8ae3c55edaa23b42c7&imgtype=0&src=http%3A%2F%2Fi0.hdslb.com%2Fbfs%2Farchive%2F6d397c313fb63e1577691a796723825a4f68135d.jpg'>
+            <img :src='item.treePictrue'>
             <div class='tree'> 
-                 <span>安徽松树</span> 
+                <span>{{item.treeName}}</span> 
                  <span>累计认养5000颗</span> 
-                 <span>30.00元/颗</span>  
+                 <span>{{item.treePrice}}元/颗</span>  
             </div>
         </div>
         <div class='choose'>
@@ -40,11 +40,12 @@
 </div>
 </template>
 <script>
-
+import  axios from 'axios'
 export default {
     data() {
         return {
        show: false,   
+       arr:[],
  areaList:
 {
   province_list: {
@@ -86,6 +87,14 @@ methods: {
         console.log(1)
         this.$router.push({name:'renyang'})
     }
+},
+mounted() {
+      axios.get('/tree/all').then((result)=>{
+      // console.log(result)
+       this.arr=result.data.data
+       console.log(this.tree)
+       
+   })
 },
 }
 </script>

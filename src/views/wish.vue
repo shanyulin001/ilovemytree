@@ -11,7 +11,7 @@
       </van-nav-bar>
     </div>
     <div class="xiang_img">
-      <img src="../../../img/1.jpg" alt />
+      <img src="../assets/1.jpg" alt />
     </div>
     <h3>简洁</h3>
     <div class="wish_jian">

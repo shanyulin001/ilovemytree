@@ -24,7 +24,7 @@
 </template>
 
 <script>
-    import API from 'api'
+    // import API from 'api'
     export default {
         data() {
             return {
@@ -34,22 +34,20 @@
         },
         mounted() {
             this.$store.commit('tree')
-            sessionStorage.setItem('uID', '13117879960');
+            // sessionStorage.setItem('uID', '17835698777');
             this.userNumber = sessionStorage.getItem('uID');
             if(this.userNumber){
             this.$http.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded'; 
             const params = new URLSearchParams()
             params.append('userNumber',this.userNumber)
             this.$http({
-                url: API.user_info,
+                url: '/user/userinfo',
                 method: 'post',
                 data:params
             })
             .then( res => {
-                if(res.data.message == 'success'){
                     this.imgurl = res.data.data.headPortrait
                     document.querySelector('#nickname').innerHTML = res.data.data.uNickname
-                }
             })
             .catch( err => console.log( err ));
             }else{

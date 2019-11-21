@@ -39,7 +39,7 @@
       <van-goods-action>
         <van-goods-action-icon class="xiang_chat" icon="chat-o" text="客服" />
       
-        <van-goods-action-button color="rgb(7, 116, 131)" type="warning" text="立即领养" />
+        <van-goods-action-button color="rgb(7, 116, 131)" type="warning" text="立即领养" @click="roto"  />
       
       </van-goods-action>
     </div>
@@ -62,6 +62,7 @@ export default {
     mounted() {
       //console.log(this.$route.query)
       this.$store.commit('wenst')
+      console.log(this.$route)
    },
    updated() {
    
@@ -72,6 +73,9 @@ export default {
       // this.$router.push('/tree')
     window.history.go(-1)
     this.$store.commit('tree')
+     },
+     roto(){
+       this.$router.push({name:'verify',query:{name:this.$route.query.name,price:this.$route.query.price,id:this.$route.params.id}})
      }
    },
   

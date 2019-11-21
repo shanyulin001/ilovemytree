@@ -5,7 +5,8 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
-    see:true
+    see:true,
+    xx:'',
   },
   mutations: {
     change(state){
@@ -23,6 +24,9 @@ export default new Vuex.Store({
     wenst(state){
       return state.see=false;
     },
+    model(state,value){
+      return state.xx=value
+    }
   },
   actions: { 
      eee({commit}){

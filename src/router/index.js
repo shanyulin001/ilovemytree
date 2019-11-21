@@ -113,7 +113,14 @@ const routes = [
     path: '/guide',
     name: 'guide',
     component: guide
-  },{ //设置页面
+  },
+  {
+    path:"/zhuan",
+    name:'zhuan',
+    component: () => import ('../views/zhuan')
+  },
+  
+  { //设置页面
         path: '/shezhi',
         name: 'shezhi',
         component: shezhi
@@ -168,6 +175,11 @@ const routes = [
         name: 'jifenuse',
         component: jifenuse
     },
+    {
+      path:'/verify',
+      name:'verify',
+      component: ()=> import('../views/verify')
+    },
   {
     path: '/about',
     name: 'login',
@@ -194,10 +206,15 @@ const routes = [
     component:()=>import('../views/user/addaccount.vue')
   },
   {
-    path:'/detail',
+    path:'/detail/:id',
     name:'detail',
     component:()=>import('../views/detail')
-  }
+  },
+ {
+  path:'/yuan',
+  name:'yuan',
+  component:()=>import('../views/yuan')
+ }
 ]
 
 

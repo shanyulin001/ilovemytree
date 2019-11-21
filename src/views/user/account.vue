@@ -46,7 +46,7 @@ export default {
             }
         },
     mounted () {//渲染
-        axios.post('/info/user/userinfo',{uid:111}).then((result) => {//用户
+        axios.post('/user/userinfo',{userNumber:15258469872}).then((result) => {//用户
             this.usernum=result.data.data.userNumber;//将用户手机号存到usernnum中
             console.log(result.data.data.userNumber);
         });            

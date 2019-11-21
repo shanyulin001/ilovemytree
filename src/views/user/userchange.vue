@@ -41,14 +41,6 @@
             type="number"
             placeholder="手机号"
           />
-          <van-field
-            v-model="identity"
-            rows="1"
-            autosize
-            label="身份证号"
-            type="number"
-            placeholder="请输入身份证号"
-          />
           <van-radio-group v-model="radio">
             <van-cell-group>
               <van-cell title="男" clickable @click="radio='1'">
@@ -78,7 +70,6 @@
 </template>
 
 <script>
-  import API from 'api'
   export default {
     data() {
       return {
@@ -114,7 +105,7 @@
             formData.append("dropzFile", e.file)
           }
         this.$http({
-          url: API.user_img,
+          url: '/user/uploadImage',
           method: 'POST',
           data: formData
         }).then( res =>{
@@ -125,31 +116,24 @@
         this.$http.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded'; 
         const params = new URLSearchParams()
         params.append('uId',this.username)
-        params.append('headPortrait',this.fileList[0].url.toString())
+        params.append('headPortrait','https://ftp.bmp.ovh/imgs/2019/11/2b113a601169d40a.jpg'.toString())
         params.append('uNickname',this.nickname)
-        params.append('userNumber',this.phone)
+        params.append('userNumber','15258469872')
         params.append('sex',Number(this.radio))
-        params.append('idCard',this.identity)
         params.append('birthday',this.birthday)
         this.$http({
-            url: API.user_info_change,
+            url: '/user/editcommit',
             method: 'post',
             data:params
         })
         .then( res => {
-            if(res.data.message == '修改成功'){
+          console.log(res)
                 this.$dialog.alert({
                   title: '修改个人信息',
                   message: '个人信息修改成功'
                 }).then(() => {
                   this.$router.push('/userinfo')
                 });
-            } else{
-              this.$dialog.alert({
-                  title: '修改个人信息',
-                  message: '修改失败'
-                })
-            }
         })
         .catch( err => console.log( err ));
       }
@@ -160,7 +144,7 @@
       const params = new URLSearchParams()
       params.append('userNumber',this.userNumber)
       this.$http({
-          url: API.user_info,
+          url: '/user/userinfo',
           method: 'post',
           data:params
       })

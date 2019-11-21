@@ -1,10 +1,5 @@
 <template>
   <div class="poster">
-  <div id="nav">
-      <h3>特色认养</h3>
-      <router-link to="/feature">文化认养<span class="sp1"></span></router-link>  
-      <router-link to="/culture">红色认养<span class="sp1"></span></router-link>
-    </div>
     <div class="poster-cnbox">
       <img src="../assets/1.jpg" />
     </div>
@@ -17,81 +12,17 @@
     <hr>
     <div class="dates">
       <ul>
-        <li>
-          <div class="libox1"><img src="../assets/2.jpg"></div>
+        <li v-for="list of movies" :key="list.treeId">
+          <div class="libox1">
+            <img v-bind:src="list.treePictrue">
+          </div>
           <div class="libox2">
-            <p id="p1">生态林</p>
-            <p id="p2">大源文化园提供</p>
-            <p id="p3">8888元/年</p>
+            <p id="p1">{{list.treeName}}</p>
+            <p id="p2">{{list.treeDesc}}</p>
+            <p id="p3">{{list.treePrice}}</p>
           </div>
           <div class="libox3">
-            <van-button round type="info" size="normal">确认领养</van-button>
-          </div>
-        </li>
-        <li>
-          <div class="libox1"><img src="../assets/2.jpg"></div>
-          <div class="libox2">
-            <p id="p1">生态林</p>
-            <p id="p2">大源文化园提供</p>
-            <p id="p3">8888元/年</p>
-          </div>
-          <div class="libox3">
-            <van-button round type="info" size="normal">确认领养</van-button>
-          </div>
-        </li>
-        <li>
-          <div class="libox1"><img src="../assets/2.jpg"></div>
-          <div class="libox2">
-            <p id="p1">生态林</p>
-            <p id="p2">大源文化园提供</p>
-            <p id="p3">8888元/年</p>
-          </div>
-          <div class="libox3">
-            <van-button round type="info" size="normal">确认领养</van-button>
-          </div>
-        </li>
-        <li>
-          <div class="libox1"><img src="../assets/2.jpg"></div>
-          <div class="libox2">
-            <p id="p1">生态林</p>
-            <p id="p2">大源文化园提供</p>
-            <p id="p3">8888元/年</p>
-          </div>
-          <div class="libox3">
-            <van-button round type="info" size="normal">确认领养</van-button>
-          </div>
-        </li>
-        <li>
-          <div class="libox1"><img src="../assets/2.jpg"></div>
-          <div class="libox2">
-            <p id="p1">生态林</p>
-            <p id="p2">大源文化园提供</p>
-            <p id="p3">8888元/年</p>
-          </div>
-          <div class="libox3">
-            <van-button round type="info" size="normal">确认领养</van-button>
-          </div>
-        </li>
-        <li>
-          <div class="libox1"><img src="../assets/2.jpg"></div>
-          <div class="libox2">
-            <p id="p1">生态林</p>
-            <p id="p2">大源文化园提供</p>
-            <p id="p3">8888元/年</p>
-          </div>
-          <div class="libox3">
-            <van-button round type="info" size="normal">确认领养</van-button>
-          </div>
-        </li>
-        <li>
-          <div class="libox1"><img src="../assets/2.jpg"></div>
-          <div class="libox2">
-            <p id="p1">生态林</p>
-            <p id="p2">大源文化园提供</p>
-            <p id="p3">8888元/年</p>
-          </div>
-          <div class="libox3">
-            <van-button round type="info" size="normal">确认领养</van-button>
+            <router-link to="/detail" class="yes">确认认养</router-link>
           </div>
         </li>
       </ul>
@@ -163,56 +94,24 @@
   height: 100%;
   float: left;
 }
-.libox3 button{
-  margin-top: 40%
-}
-#nav {
-  padding: 5px;
-  position: relative;
-  
-}
-
-#nav a {
-  font-weight: bold;
-  color: black;
-  font-size: 16px;
-  font-weight: 300;
+.yes{
   display: block;
-  float: left;
-  width: 50%;
-  text-align: center;
-  margin-top: 5px;
-  position: relative;
-
-}
-h3{
-  text-align:center;
-}
-.sp1{
-  display:block;
-  width: 70px;
-  height: 2px;
-  background: aquamarine;
-  position: absolute;
-  left: 40px;
-  display: none;
-
-}
-
-
-#nav a.router-link-exact-active{
-  color: aquamarine;
-  
-}
-#nav a.router-link-exact-active .sp1{
-  display: block
+  width: 90px;
+  height: 40px;
+  background: darkgreen;
+  border-radius: 20px;
+  line-height: 40px;
+  color: #fff;
+  margin-top: 43%
 }
 </style>
 <script>
+import axios from 'axios';
 export default {
   data() {
     return {
       show: false,
+      movies:[],
       areaList: {
         province_list: {
           110000: "北京市",
@@ -4266,6 +4165,16 @@ export default {
     togglePopup() {
       this.show = !this.show;
     }
-  }
+  },
+   mounted() {
+            axios.get('/treeType',{params:{
+              treeType:1
+            }}).then((result) => {
+                // console.log(result.data.data[1]);
+                this.movies = result.data.data;
+                console.log(this.movies)
+            })
+        },
+        
 };
 </script>

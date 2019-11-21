@@ -1,11 +1,10 @@
 <template>
   <div class="acti">
-   
-      <span class="mui-icon mui-icon-arrowleft" @click.prevent="kkkk"></span>
-    
-    <div> </div>
+    <router-link to="/">
+      <span class="mui-icon mui-icon-arrowleft"></span>
+    </router-link>
     <h1>转增选择</h1>
-    <div class="content">
+    <!-- <div class="content">
       <ul>
         <li v-for="go of list" :key="go.id" >
           <input type="radio" name='go.name' ref='list' v-bind:checked='cc'  />
@@ -24,27 +23,27 @@
           </p>
         </li>
       </ul>
-    </div>
-    <!-- <div class='content'>
+    </div> -->
+    <div class='content'>
       <ul>
         <li v-for="go of list" :key="go.treeID" >
           <input type="radio" name='go.treeName' ref='list' v-bind:checked='cc' />
-          <img :src="assets" />
+          <img :src="go.treePrice" />
 
-          <h2>{{go.name}}</h2>
-          <i>{{go.treePrice}}/棵</i>
+          <h2>{{go.treeName}}</h2>
+          <i>{{go.treeNum}}/棵</i>
 
           <p>
             <em>类型：生态林</em>
             <span>
               <button @click="add(go,-1)">-</button>
-              {{num}}
+              {{go.treeNum}}
               <button @click="add(go,1)">+</button>
             </span>
           </p>
         </li>
       </ul>
-    </div> -->
+    </div>
     <div class="foot" v-show="a">
       <!-- <router-link to="/home/zhuan/queren"> -->
         <button @click="aaa">我要转增</button>
@@ -59,9 +58,9 @@
     <div class='box' v-if='qw' ref='ddd'>
       <h4>确认转赠</h4>
       <ul>
-         <li>生态林：{{this.list1.name}}</li>
-        <li>单价：{{this.list1.pic}}元</li>
-        <li>数目：{{this.list1.sh}}课</li>
+         <li>生态林：{{this.list1.treeName}}</li>
+        <li>单价：{{this.list1.treePrice}}元</li>
+        <li>数目：{{this.list1.treeNum}}课</li>
         <li>赠与用户：{{phone}}</li>
         <!-- <li>生态林：{{this.list1.name}}</li>
         <li>单价：{{this.list1.pic}}元</li>
@@ -73,7 +72,8 @@
       <button class="button2" @click='ok'>确定</button>
       </div>
       <div class="box1"  v-if=ee>
-        <img src="../assets/03744.png" alt="">
+        <img src="../assets/sss.png" alt="">
+        <!-- 转赠成功 -->
         <div class='box2' @click='done'>确定</div>
       </div>
      
@@ -86,13 +86,13 @@
 </template>
 <script>
 //import img from "@/assets/03744.png";
-// import axios from 'axios';
+import axios from 'axios';
 export default {
   data() {
     return {
       
       a:true,
-      assets: '../../assets/03744.png',
+      assets: '../../assets/sss.png',
       qw:'',
       ccc:false,
       ddd:'',
@@ -101,24 +101,18 @@ export default {
       phone:'',
       ee:false,
       list: [
-        { id: "1", name: "安徽松树", typ: "生态林", pic: 30, sh: 1 },
-        { id: "2", name: "安徽松", typ: "生态", pic: 30, sh: 1 },
-        { id: "3", name: "安树", typ: "生林", pic: 30, sh: 1 }
+        // { id: "1", name: "安徽松树", typ: "生态林", pic: 30, sh: 1 },
+        // { id: "2", name: "安徽松", typ: "生态", pic: 30, sh: 1 },
+        // { id: "3", name: "安树", typ: "生林", pic: 30, sh: 1 }
       ],
       list1:''
     };
   },
   methods: {
     add(go, n) {
-      if (go.sh + n > 0) {
-        go.sh += n;
-      }else if(go.num +n>10){
-        return
+      if (go.treeNum + n > 0) {
+        go.treeNum += n;
       }
-    },
-    kkkk(){
-     this.$store.commit('tree');
-     this.$router.push('/')
     },
     aaa(){
       this.a=false
@@ -144,15 +138,17 @@ export default {
     },
     ok(){
       this.ee=true
-      console.log(this.assets)
-    // let data = sessionStorage.getItem('uID');//获取session 数据
-      // axios.post('',{
-      //   uID:data,
-      //   userNumber:this.phone,
-      //   treeID:this.list1.treeID,
-      //   sendtreenumber:this.num,
-      //   usertreenumber:this.list1.treeNum
-      // })
+      // console.log(this.assets)
+    // let data = sessionStorage.getItem('uId');//获取session 数据
+    let data =13738739599
+  
+      axios.post('http://123.57.48.173:8091/send/sendOthers',{
+        uId:data,
+        userNumber:this.phone,
+        treeId:this.list1.treeId,
+        // sendtreenumber:this.num,
+        // usertreenumber:this.list1.treeNum
+      })
     },
     done(){
       this.ee=false
@@ -160,27 +156,28 @@ export default {
     }
   },
   mounted(){
-    // let data = sessionStorage.getItem('uID');//获取session 数据
-    // if(data){  // 如果是登录状态 获取转赠信息
-    //   axios.get().then((result)=>{
-    //     this.list=result.data
-    //   })
-    // }
-    this.$store.commit('wenst')
+    let data = sessionStorage.getItem('ii');//获取session 数据
+    if(data){  // 如果是登录状态 获取转赠信息
+      axios.get('/send/detail',{params:{uId:data}}).then((result)=>{
+        this.list=result.data
+        console.log(result)
+        console.log(this.list)
+      })
+    }
+    
   }
 };
 </script>
 <style scoped>
 
 .acti{
-  height: 100%;
+  height: 617px;
 }
 .acti h1 {
-  /* display: inline-block; */
+  display: inline-block;
   font-size: 18px;
   line-height: 21px;
-  text-align: center
-  /* margin-left: -32px; */
+  margin-left: -32px;
 }
 .mui-active {
   float: left;
@@ -262,7 +259,8 @@ export default {
 .foot {
   /* margin-top: 32%; */
   position: absolute;
-  bottom: 50px;
+  left: 20px;
+  bottom: -25px;
   width:100%;
 }
 .foot button {

@@ -30,7 +30,6 @@
 </template>
 
 <script>
-    import API from 'api'
     export default {
         data(){
             return{
@@ -49,12 +48,11 @@
             const params = new URLSearchParams()
             params.append('userNumber',this.userNumber)
             this.$http({
-                    url: API.user_info,
+                    url: '/user/userinfo',
                     method: 'post',
                     data:params
                 })
                 .then( res => {
-                    if(res.data.message == 'success'){
                         this.imgurl = res.data.data.headPortrait
                         this.username = res.data.data.uId
                         this.nickname = res.data.data.uNickname
@@ -62,7 +60,7 @@
                         this.identity = res.data.data.idCard
                         this.radio = res.data.data.sex
                         this.birthday = res.data.data.birthday
-                    }
+                    
                 })
                 .catch( err => console.log( err ));
         },

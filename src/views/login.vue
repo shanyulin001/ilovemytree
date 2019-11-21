@@ -47,6 +47,7 @@
   </div>
 </template>
 <script>
+// import API from 'api'
 import { Toast } from "mint-ui";
 // import axios from 'axios';
 export default {
@@ -80,31 +81,25 @@ export default {
          }else if(this.password==''){
            Toast("密码不能为空");
        } else{
-         var ajax = new XMLHttpRequest()
-            ajax.open('post','/user/login',true)
-            ajax.setRequestHeader('content-type','application/x-www-form-urlencoded');
-            ajax.send('userNumber='+this.phone+'&pwd='+this.password)
-            ajax.onreadystatechange=function(){
-              if(ajax.readyState==4){
-                console.log(ajax.responseText.data.uId)
-                // sessionStorage.setItem("uID", ajax.responseText.data.uId);
-                sessionStorage.setItem('uID',ajax.responseText.data.uId)
+            this.$http.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded'; 
+            const params = new URLSearchParams()
+            params.append('userNumber',this.phone)
+            params.append('pwd',this.password)
+            this.$http({
+                url: '/user/login',
+                method: 'post',
+                data:params
+            })
+            .then( res => {
+              console.log(res)
+                sessionStorage.setItem('uID','15258469872')
+                sessionStorage.setItem('ii',res.data.data.uId)
                 alert('登录成功')
-              }
+                this.$router.push('/userhome')
+            })
+            .catch( err => console.log( err ));
             }
-          //  axios.post('/user/login',{
-          //    userNumber:this.phone,
-          //    pwd:this.password
-          //  }) .then(function(response){
-          //    if(response.message=='登录成功'){
-          //      sessionStorage.setItem("uID", response.data.uID);
-          //     //  this.$store.commit('storephone',this.phone)
-          //       alert('登录成功')
-          //    }
-          //  })
-          
-         }
-      },
+            },
       agreement(){
         this.$router.push('registration-agreement')
       }

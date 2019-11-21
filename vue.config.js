@@ -18,9 +18,10 @@ module.exports = {
             .set('views',path.join(__dirname,'./src/views'))
     },
     devServer:{
+   
         proxy:{
             '/user/userinfo': {
-                target: `${ENV.DEV.BACK_END_URL}:8093`,
+                target: `http://121.199.79.111:8093`,
                 ws: true,
                 changeOrigin: true
             },
@@ -72,9 +73,39 @@ module.exports = {
             '/tree':{
                 target: `http://121.199.79.111:8092`,
                 ws: true,
-                changeOrigin: true
-            },
+                changeOrigin: true,
+              
 
+            },
+            '/treeType': {
+                target: 'http://121.199.79.111:8095',
+                ws: true,
+                changeOrigin: true,
+              
+            },
+            '/user':{
+                target: `http://121.199.79.111:8093`,
+                ws: true,
+                changeOrigin: true,
+              
+            },
+            '/tree/adoption':{
+                target: `http://121.199.79.111:8092`,
+                ws: true,
+                changeOrigin: true,
+              
+            },
+            '/send':{
+                target: `http://123.57.48.173:8091`,
+                ws: true,
+                changeOrigin: true,
+              
+            },
+            
+            
+
+
+           
             
         }
     },

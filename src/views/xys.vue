@@ -133,16 +133,17 @@ export default {
     top:-30px;
 }
 .search{
-    width:90px;
+    width:130px;
     border:2px solid #1aa176;
     border-radius:10px;
+    height: 30px;
    
 }
 .search input{
     border:none;
-    width:70px;
+    width:100px;
     height:79%;
-  
+    background: rgb(239, 239, 244)
 }
 .fdj{
     color:#1aa176;

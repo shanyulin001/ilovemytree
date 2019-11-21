@@ -1,7 +1,7 @@
 <template>
   <div class="xuan_bady">
     <div class="jiao">
-      <i> <img src="../assets/返回按钮.png" alt="" /> </i>
+      <i @click="goto"> <img src="../assets/返回按钮.png" alt="" /> </i>
       <h3 style="text-align:center">确认订单</h3>
     </div>
     <div class="xuan_tou">
@@ -12,7 +12,7 @@
         />
       </div>
       <div class="xuan_text">
-        <h4>树明</h4>
+        <h4>{{this.$route.query.name}}</h4>
         <ul>
           <li>800年</li>
           <li>安徽人民政府发布</li>
@@ -23,11 +23,11 @@
     <div class="xuan_jia">
       <div>
         <p>单价</p>
-        <span>40000.00元/棵</span>
+        <span>{{this.$route.query.price}}元/棵</span>
       </div>
       <div class="ran_ku">
         <p>认养数量</p>
-        <input type="text" placeholder="输入数量" /><span>棵</span>
+        <input type="text" placeholder="输入数量"  v-model="monery" /><span>棵</span>
       </div>
       <div>
         <p>期限</p>
@@ -35,7 +35,7 @@
       </div>
       <div>
         <p>代付金额</p>
-        <span>40000.00元</span>
+        <span>{{get}}元</span>
       </div>
       <div class="ran_an">
         <p>支付方式</p>
@@ -45,10 +45,62 @@
       <!-- <van-panel title="单价" status="400000.00元/猪"> </van-panel> -->
     </div>
     <div class="butto" >
-      <button  style="margin: auto;display:block">提交</button>
+      <button  style="margin: auto;display:block" @click="send">提交</button>
     </div>
   </div>
 </template>
+<script>
+//import { log } from 'util'
+import axios from 'axios'
+export default {
+  name: "verify",
+  data(){
+    return {
+      monery:''
+    }
+  },
+  mounted() {
+    this.$store.commit('wenst')
+    console.log(this.$refs)
+    console.log(sessionStorage.getItem("uID"))
+  },
+  methods: {
+    goto(){
+      window.history.go(-1)
+    },
+    send(){
+      
+        axios.post(`/tree/adoption/order/${sessionStorage.getItem('ii')}/${this.$route.query.id}/${this.monery}`,
+        {
+          uId:500,
+          treeId:this.$route.query.id,
+          oTreeNum:this.monery
+
+        }
+    //  /tree/adoption/order/{uId}/{treeId}/{oTreenum}
+        ).then(
+          (res)=>{
+            console.log(res)
+            if(res.data.message=='购买成功'){
+              alert('购买成功')
+              this.$router.push('/')
+            }
+          }
+        )
+    }
+  },
+  computed: {
+     get(){
+      if(this.monery) {
+        return Number(this.monery)*this.$route.query.price
+      }else{
+        return ""
+      }
+     } 
+  },
+  
+};
+</script>
 
 
 <style scoped>
@@ -128,7 +180,7 @@
   color: red;
 }
 .ran_ku input {
-  width: 85px;
+  width: 105px;
   height: 20px;
   position: absolute;
   right: 25px;
@@ -165,12 +217,4 @@ font-size: 20px;
 color: #ffffff;
 }
 </style>
-<script>
-export default {
-  name: "verify",
-  mounted() {
-    this.$store.commit('wenst')
-  },
-  
-};
-</script>
+
