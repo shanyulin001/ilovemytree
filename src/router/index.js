@@ -192,6 +192,11 @@ const routes = [
     path:'/addaccount',
     name:'addaccount',
     component:()=>import('../views/user/addaccount.vue')
+  },
+  {
+    path:'/detail',
+    name:'detail',
+    component:()=>import('../views/detail')
   }
 ]
 

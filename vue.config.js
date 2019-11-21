@@ -68,7 +68,13 @@ module.exports = {
                 target: `${ENV.DEV.BACK_END_URL}:8090`,
                 ws: true,
                 changeOrigin: true
-            }
+            },
+            '/tree':{
+                target: `http://121.199.79.111:8092`,
+                ws: true,
+                changeOrigin: true
+            },
+
             
         }
     },
