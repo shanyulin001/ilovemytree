@@ -3,16 +3,26 @@ import VueRouter from 'vue-router'
 import tree from '../views/tree'
 import oldtree from '../views/oldtree'
 import rj from '../views/rj'
+<<<<<<< HEAD
 import   Gong from '../views/gong'
 import    Fu  from '../views/fu'
 import    Song from '../views/song'
+=======
+import Gong from '../views/gong'
+import Fu from '../views/fu'
+import Song from '../views/song'
+
+>>>>>>> 053fc5c6443a42ed6756230bf0161db3f54bda50
 
 import userhome from '../views/user/userhome'
 import userinfo from 'views/user/userinfo'
 import userchange from 'views/user/userchange'
 import user_stgyl from 'views/user/user_stgyl'
+<<<<<<< HEAD
 import guide from 'views/user/guide'
 
+=======
+>>>>>>> 053fc5c6443a42ed6756230bf0161db3f54bda50
 import shezhi from '../views/user/shezhi' //设置页面
 import account from '../views/user/account' //账号与安全
 import withdrawdeposit from '../views/user/withdrawdeposit' //提现资料
@@ -88,6 +98,7 @@ const routes = [
       component:Fu
     },
     {
+<<<<<<< HEAD
       path:'song',
       name:'song',
       component:Song
@@ -114,6 +125,34 @@ const routes = [
     name: 'guide',
     component: guide
   },{ //设置页面
+=======
+        path: '/tree',
+        name: 'tree',
+        component: tree
+    },
+    {
+        path: '/oldtree',
+        name: "oldtree",
+        component: oldtree
+    },
+    {
+        path: '/userhome',
+        name: 'userhome',
+        component: userhome
+    }, {
+        path: '/userinfo',
+        name: 'userinfo',
+        component: userinfo
+    }, {
+        path: '/userchange',
+        name: 'userchange',
+        component: userchange
+    }, {
+        path: '/user_stgyl',
+        name: 'user_stgyl',
+        component: user_stgyl
+    }, { //设置页面
+>>>>>>> 053fc5c6443a42ed6756230bf0161db3f54bda50
         path: '/shezhi',
         name: 'shezhi',
         component: shezhi
@@ -168,6 +207,7 @@ const routes = [
         name: 'jifenuse',
         component: jifenuse
     },
+<<<<<<< HEAD
   {
     path: '/about',
     name: 'login',
@@ -193,12 +233,168 @@ const routes = [
     name:'addaccount',
     component:()=>import('../views/user/addaccount.vue')
   }
+=======
+    {
+        path: '/tree/renyang',
+        name: 'renyang',
+        component: () =>
+            import ('../views/renyang')
+    },
+    {
+        path: '/feature',
+        name: 'feature',
+        component: () =>
+            import ('../views/feature')
+    },
+    {
+        path: '/culture',
+        name: 'culture',
+        component: () =>
+            import ('../views/culture')
+    },
+    {
+        path: '/tree/xys',
+        name: 'xys',
+        component: () =>
+            import ('../views/xys')
+    },
+    {
+        path: '/tree/xys/rj',
+        name: 'rj',
+        component: rj
+    },
+    {
+        path: '/',
+        redirect: '/tree'
+    },
+    {
+        path: '/tree/xys/make',
+        name: 'make',
+        component: () =>
+            import ('../views/make')
+    },
+    {
+        path: '/tree/xys/eee',
+        name: 'eee',
+        component: () =>
+            import ('../views/eee')
+
+    },
+    // { path:'',
+    // name:'',
+    //  component:  
+    // },
+
+    {
+        path: '/tree/xys/fx',
+        component: () =>
+            import ('../views/aspiration'),
+        children: [{
+                path: '/',
+                name: 'gong',
+                component: Gong
+            }, {
+                path: 'fu',
+                name: 'fu',
+                component: Fu
+            },
+            {
+                path: 'song',
+                name: 'song',
+                component: Song
+            }, {
+                path: '/signin',
+                name: 'signin',
+                component: () =>
+                    import ('../views/signin')
+            },
+            {
+                path: '/zhuan',
+                name: 'zhuan',
+                component: () =>
+                    import ('../views/zhuan')
+            },
+            {
+                path: '/trees/:id',
+                name: 'detail',
+                component: () =>
+                    import ('../views/detail')
+
+
+            },
+
+            {
+                path: '/oldtree',
+                name: "oldtree",
+                component: oldtree
+            },
+            {
+                path: '/tree/renyang',
+                name: 'renyang',
+                component: () =>
+                    import ('../views/renyang')
+            },
+            {
+                path: '/feature',
+                name: 'feature',
+                component: () =>
+                    import ('../views/feature')
+            },
+            {
+                path: '/culture',
+                name: 'culture',
+                component: () =>
+                    import ('../views/culture')
+            },
+            {
+                path: '/tree/xys',
+                name: 'xys',
+                component: () =>
+                    import ('../views/xys')
+            },
+            {
+                path: '/tree/xys/rj',
+                name: 'rj',
+                component: rj
+            },
+            {
+                path: '/',
+                redirect: '/tree'
+            },
+            {
+                path: '/tree/xys/make',
+                name: 'make',
+                component: () =>
+                    import ('../views/make')
+            },
+            {
+                path: '/tree/xys/eee',
+                name: 'eee',
+                component: () =>
+                    import ('../views/eee')
+
+            },
+            {
+                path: '/tree/shop',
+                name: 'verify',
+                component: () =>
+                    import ('../views/verify')
+            },
+            {
+                path: '/tree/xuyuan',
+                name: 'xuyaun',
+                component: () =>
+                    import ('../views/xuyuan')
+            }
+        ]
+    }
+>>>>>>> 053fc5c6443a42ed6756230bf0161db3f54bda50
 ]
 
-const router = new VueRouter({
+
+
+export default router = new VueRouter({
     mode: 'history',
     base: process.env.BASE_URL,
     routes
 })
-
-export default router
