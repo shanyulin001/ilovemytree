@@ -25,15 +25,9 @@ export default new Vuex.Store({
     },
   },
   actions: { 
-<<<<<<< HEAD
      eee({commit}){
         commit('aaa')
      }
-=======
-    add(context,movie){
-      console.log(movie)
-    }
->>>>>>> 053fc5c6443a42ed6756230bf0161db3f54bda50
   },
   modules: {
   }

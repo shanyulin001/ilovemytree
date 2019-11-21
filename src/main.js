@@ -3,7 +3,6 @@ import App from './App.vue'
 import router from './router'
 import Router from 'vue-router'
 import store from './store'
-<<<<<<< HEAD
 import axios from 'axios'
 import VueAxios from 'vue-axios'
 
@@ -71,21 +70,12 @@ Vue.use(Icon);
 Vue.use(NavBar)
 Vue.config.productionTip = false
 
-=======
-
-import Vant from 'vant';
-import 'vant/lib/index.css';
-Vue.use(Vant);
-
-import './lib/mui/css/mui.min.css'
->>>>>>> 053fc5c6443a42ed6756230bf0161db3f54bda50
 const routerPush = Router.prototype.push
 Router.prototype.push = function push(location) {
     return routerPush.call(this, location).catch(error => error)
 }
 
 
-<<<<<<< HEAD
 
 
 Vue.use(VueAMap);
@@ -105,8 +95,6 @@ VueAMap.initAMapApiLoader({
     v: '1.4.4'
 });
 
-=======
->>>>>>> 053fc5c6443a42ed6756230bf0161db3f54bda50
 Vue.config.productionTip = false
 new Vue({
     router,
