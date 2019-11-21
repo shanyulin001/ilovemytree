@@ -20,62 +20,52 @@ module.exports = {
     devServer:{
         proxy:{
             '/user/userinfo': {
-                target: 'http://10.31.167.54:8093',
+                target: `${ENV.DEV.BACK_END_URL}:8093`,
                 ws: true,
                 changeOrigin: true
             },
             '/user/editcommit': {
-                target: ENV.DEV.BACK_END_URL,
+                target: `${ENV.DEV.BACK_END_URL}:8093`,
                 ws: true,
                 changeOrigin: true
             },
             '/myTree': {
-                target: ENV.DEV.BACK_END_URL,
+                target: `${ENV.DEV.BACK_END_URL}:8093`,
                 ws: true,
                 changeOrigin: true
             },
             '/user/uploadImage': {
-                target: ENV.DEV.BACK_END_URL,
+                target: `${ENV.DEV.BACK_END_URL}:8093`,
                 ws: true,
                 changeOrigin: true
             },
             '/myTreeList': {
-                target: ENV.DEV.BACK_END_URL,
-                ws: true,
-                changeOrigin: true
-            },
-            '/info': {
-                target: ENV.DEV.BACK_END_URL,
-                ws: true,
-                changeOrigin: true
-            },
-            '/user': {
-                target: ENV.DEV.BACK_END_URL,
+                target: `${ENV.DEV.BACK_END_URL}:8093`,
                 ws: true,
                 changeOrigin: true
             },
             '/user/registe': {
-                target: ENV.DEV.BACK_END_URL,
+                target: `${ENV.DEV.BACK_END_URL}:8093`,
                 ws: true,
                 changeOrigin: true
             },
             '/info/scoreDetail': {
-                target: ENV.DEV.BACK_END_URL,
+                target: `${ENV.DEV.BACK_END_URL}:8090`,
                 ws: true,
                 changeOrigin: true
             },
             '/info/queryInfo': {
-                target: ENV.DEV.BACK_END_URL,
+                target: `${ENV.DEV.BACK_END_URL}:8090`,
                 ws: true,
                 changeOrigin: true
             },
             '/info/bdyhk': {
-                target: ENV.DEV.BACK_END_URL,
+                target: `${ENV.DEV.BACK_END_URL}:8090`,
                 ws: true,
                 changeOrigin: true
             },
             '/info/getAmt': {
-                target: ENV.DEV.BACK_END_URL,
+                target: `${ENV.DEV.BACK_END_URL}:8090`,
                 ws: true,
                 changeOrigin: true
             }
